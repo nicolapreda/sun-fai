@@ -1,18 +1,18 @@
 User-agent: *
 Allow: /
 
-# Daniel Turani - DT Photo Portfolio
-# Fotografo specializzato in discoteche e vita notturna italiana
+# Sun-Fai - Cooperativa Energia Rinnovabile
+# Comunità Energetica Solidale
 
 # Priorità pagine principali
 Allow: /index.html
 Allow: /assets/
 
 # Sitemap
-Sitemap: https://www.dtphoto.it/sitemap.xml
+Sitemap: https://www.sun-fai.it/sitemap.xml
 
 # Crawl-delay per rispettare i server
 Crawl-delay: 1
 
 # Host preference
-Host: https://www.dtphoto.it
+Host: https://www.sun-fai.it

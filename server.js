@@ -11,8 +11,8 @@ app.get('/', (req, res) => {
 });
 
 // Avvio del server
-const PORT = process.env.PORT || 3005;
+const PORT = process.env.PORT || 3010;
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`🚀 DT Photo Portfolio attivo su http://0.0.0.0:${PORT}`);
-  console.log(`📸 Portfolio del fotografo DT Photo`);
+  console.log(`🚀 Sun-Fai Website attivo su http://0.0.0.0:${PORT}`);
+  console.log(`📸 Sito web di Sun-Fai Cooperativa`);
 });

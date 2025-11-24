@@ -1,9 +1,9 @@
 {
-  "name": "dt-photo-website",
+  "name": "sun-fai-website",
   "version": "1.0.0",
-  "description": "DT Photo - Fotografo specializzato in discoteche e vita notturna",
+  "description": "Sun-Fai - Cooperativa Energia Rinnovabile",
   "license": "ISC",
-  "author": "DT Photo",
+  "author": "Sun-Fai",
   "type": "commonjs",
   "main": "server.js",
   "scripts": {
