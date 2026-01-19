@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Le CER(S) | Sun-Fai Cooperativa - Comunità Energetiche</title>
+    <meta name="description"
+        content="Scopri cosa sono le Comunità Energetiche Rinnovabili (CER) e come funzionano in Sun-Fai. Unisciti a noi per condividere energia e creare valore sociale." />
+    <link rel="icon" href="/assets/logo-min.png" type="image/png" />
+
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sunfai-yellow': '#FFD600',
+                        'sunfai-black': '#000000',
+                        'sunfai-white': '#FFFFFF',
+                    },
+                    fontFamily: {
+                        'sans': ['"Glacial Indifference"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @font-face {
+            font-family: 'Glacial Indifference';
+            src: url('./assets/GlacialIndifference-Regular.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Glacial Indifference';
+            src: url('./assets/GlacialIndifference-Bold.otf') format('opentype');
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Glacial Indifference';
+            src: url('./assets/GlacialIndifference-Italic.otf') format('opentype');
+            font-weight: normal;
+            font-style: italic;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-family: 'Glacial Indifference', sans-serif;
+        }
+
+        .yellow-brush-bg {
+            position: relative;
+            display: inline-block;
+            padding: 0 10px;
+        }
+
+        .yellow-brush-bg::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            right: -10px;
+            top: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='400' height='80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5,40 Q50,10 100,35 T200,40 T300,35 T395,40' stroke='%23FFD600' stroke-width='70' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            z-index: -1;
+            transform: rotate(-1deg);
+        }
+    </style>
+</head>
+
+<body class="bg-white flex flex-col min-h-screen">
+
+    <!-- NAVIGATION -->
+    <!-- NAVIGATION -->
+    <%- include('partials/navbar') %>
+
+        <!-- MAIN CONTENT -->
+        <main class="flex-grow pt-40 pb-20">
+            <div class="max-w-7xl mx-auto px-6">
+
+                <!-- SECTION 1: Le CER(S) in Sun-Fai -->
+                <div class="flex flex-col lg:flex-row gap-16 items-start mb-32">
+                    <div class="w-full lg:w-1/2">
+                        <div class="rounded-3xl overflow-hidden shadow-2xl">
+                            <img src="./assets/chi-siamo-2.webp" alt="Sun-Fai Stand" class="w-full h-auto">
+                        </div>
+                    </div>
+                    <div class="w-full lg:w-1/2">
+                        <h1 class="text-4xl md:text-5xl font-black mb-8 relative inline-block">
+                            Le CER(S) in Sun-Fai
+                            <span
+                                class="absolute bottom-2 left-0 w-full h-4 bg-sunfai-yellow -z-10 transform -rotate-1"></span>
+                        </h1>
+                        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                            Sun-fai è una <span class="yellow-brush-bg">cooperativa</span>, una grande <span
+                                class="yellow-brush-bg">comunità energetica rinnovabile</span> che ospita al suo interno
+                            più
+                            configurazioni da tutta Italia.<br>
+                            Ogni configurazione è autonoma e fa riferimento alla propria cabina primaria. I soci della
+                            cooperativa scambiano virtualmente energia elettrica solo con i soci afferenti alla medesima
+                            cabina primaria.<br>
+                            Il regolamento interno è unico e condiviso, ma ogni configurazione ha autonomia per quel che
+                            le
+                            compete.<br>
+                            Dotiamo ogni configurazione di una piattaforma unica in Italia e sviluppata interamente da
+                            noi
+                            che permette ai soci della cooperativa di sapere in tempo reale quanta energia c'è a
+                            disposizione da scambiare virtualmente in ogni quarto orario. Ardaké.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- SECTION 2: Cosa sono le CER(S)? -->
+                <div class="flex flex-col lg:flex-row gap-16 items-start">
+                    <div class="w-full lg:w-1/2">
+                        <h2 class="text-4xl md:text-5xl font-black mb-8 relative inline-block">
+                            Cosa sono le CER(S)?
+                            <span
+                                class="absolute bottom-2 left-0 w-full h-4 bg-sunfai-yellow -z-10 transform -rotate-1"></span>
+                        </h2>
+                        <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                            La <span class="yellow-brush-bg">definizione arriva direttamente</span> dal portale <span
+                                class="yellow-brush-bg">del GSE</span>:<br>
+                            Una CER è un insieme di cittadini, piccole e medie imprese, enti territoriali e autorità
+                            locali,
+                            incluse le amministrazioni comunali, le cooperative, gli enti di ricerca, gli enti
+                            religiosi,
+                            quelli del terzo settore e di protezione ambientale, che condividono l'energia elettrica
+                            rinnovabile prodotta da impianti nella disponibilità di uno o più soggetti associatisi alla
+                            comunità.<br>
+                            In una CER l'energia elettrica rinnovabile può essere condivisa tra i diversi soggetti
+                            produttori e consumatori, localizzati all'interno di un medesimo perimetro geografico,
+                            grazie
+                            all'impiego della rete nazionale di distribuzione di energia elettrica, che rende possibile
+                            la
+                            condivisione virtuale di tale energia.<br>
+                            In breve, è un meccanismo che prevede l'incentivazione di tutta l'energia che alcuni
+                            componenti
+                            della comunità riescono a produrre in eccesso e nel contempo altri componenti della comunità
+                            consumano nella medesima fascia oraria.<br>
+                            Gli incentivi che la comunità di energia rinnovabile riesce a raccogliere sono riconosciuti
+                            dal
+                            GSE alla cooperativa Sun-fai, la quale si preoccupa della redistribuzione secondo quanto
+                            stabilito dal regolamento interno, deciso dai soci della cooperativa.<br>
+                            Chi fa parte di una comunità di energia rinnovabile viene classificato secondo uno dei due
+                            ruoli
+                            previsti: autoconsumatore di energia rinnovabile (prosumer) o cliente finale (consumer).
+                        </p>
+                    </div>
+
+                    <div class="w-full lg:w-1/2">
+                        <div class="rounded-3xl overflow-hidden shadow-2xl">
+                            <img src="./assets/chi-siamo-2.webp" alt="Sun-Fai Card" class="w-full h-auto">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="text-center mt-20">
+                    <a href="/" class="text-sm font-bold underline hover:text-sunfai-yellow transition">Torna
+                        alla
+                        home</a>
+                </div>
+            </div>
+        </main>
+
+        <%- include('partials/footer') %>
+
+
+
+</body>
+
+</html>

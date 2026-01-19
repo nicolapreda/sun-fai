@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sun-Fai Admin - Dashboard</title>
+    <link rel="icon" href="/assets/logo-min.png" type="image/png" />
+    <link href="../src/input.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sunfai-yellow': '#FFD600',
+                        'dt-black': '#000000',
+                        'dt-white': '#FFFFFF',
+                        'dt-gray': '#1a1a1a',
+                        'dt-gray-light': '#333333',
+                    },
+                    fontFamily: {
+                        'sans': ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-dt-black text-white font-sans min-h-screen flex flex-col">
+    <!-- Header -->
+    <div class="bg-dt-gray px-6 py-4 shadow-md flex justify-between items-center sticky top-0 z-50">
+        <h1 class="text-2xl font-bold text-sunfai-yellow">Dashboard Amministrazione</h1>
+        <button class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-full transition duration-300"
+            onclick="logout()">
+            Logout
+        </button>
+    </div>
+
+    <div class="container mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl">
+        <!-- News Section -->
+        <div class="bg-dt-gray p-8 rounded-3xl shadow-lg border border-dt-gray-light">
+            <h2 class="text-3xl font-bold mb-6 text-white border-b border-dt-gray-light pb-4">Gestione Notizie</h2>
+
+            <form id="newsForm" class="space-y-6">
+                <div class="space-y-2">
+                    <label class="block text-sm font-bold text-gray-300">Titolo</label>
+                    <input type="text" name="title" required
+                        class="w-full px-4 py-3 rounded-lg bg-dt-gray-light border border-gray-600 focus:border-sunfai-yellow focus:outline-none text-white placeholder-gray-400 transition">
+                </div>
+                <div class="space-y-2">
+                    <label class="block text-sm font-bold text-gray-300">Contenuto</label>
+                    <textarea name="content" rows="4" required
+                        class="w-full px-4 py-3 rounded-lg bg-dt-gray-light border border-gray-600 focus:border-sunfai-yellow focus:outline-none text-white placeholder-gray-400 transition resize-none"></textarea>
+                </div>
+                <div class="space-y-2">
+                    <label class="block text-sm font-bold text-gray-300">Data</label>
+                    <input type="date" name="date" required
+                        class="w-full px-4 py-3 rounded-lg bg-dt-gray-light border border-gray-600 focus:border-sunfai-yellow focus:outline-none text-white placeholder-gray-400 transition">
+                </div>
+                <div class="space-y-2">
+                    <label class="block text-sm font-bold text-gray-300">Immagine</label>
+                    <input type="file" name="image" accept="image/*"
+                        class="w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-dt-gray-light file:text-white hover:file:bg-gray-600">
+                </div>
+                <button type="submit"
+                    class="w-full bg-sunfai-yellow text-black font-bold py-3 rounded-full hover:bg-yellow-400 transition duration-300 uppercase tracking-wide">
+                    Aggiungi Notizia
+                </button>
+            </form>
+
+            <div class="mt-8 space-y-4 max-h-[500px] overflow-y-auto pr-2 custom-scrollbar" id="newsList">
+                <!-- News items will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Events Section -->
+        <div class="bg-dt-gray p-8 rounded-3xl shadow-lg border border-dt-gray-light">
+            <h2 class="text-3xl font-bold mb-6 text-white border-b border-dt-gray-light pb-4">Gestione Eventi</h2>
+
+            <form id="eventsForm" class="space-y-6">
+                <div class="space-y-2">
+                    <label class="block text-sm font-bold text-gray-300">Titolo</label>
+                    <input type="text" name="title" required
+                        class="w-full px-4 py-3 rounded-lg bg-dt-gray-light border border-gray-600 focus:border-sunfai-yellow focus:outline-none text-white placeholder-gray-400 transition">
+                </div>
+                <div class="space-y-2">
+                    <label class="block text-sm font-bold text-gray-300">Descrizione</label>
+                    <textarea name="description" rows="4" required
+                        class="w-full px-4 py-3 rounded-lg bg-dt-gray-light border border-gray-600 focus:border-sunfai-yellow focus:outline-none text-white placeholder-gray-400 transition resize-none"></textarea>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-2">
+                        <label class="block text-sm font-bold text-gray-300">Data</label>
+                        <input type="date" name="date" required
+                            class="w-full px-4 py-3 rounded-lg bg-dt-gray-light border border-gray-600 focus:border-sunfai-yellow focus:outline-none text-white placeholder-gray-400 transition">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="block text-sm font-bold text-gray-300">Luogo</label>
+                        <input type="text" name="location" required
+                            class="w-full px-4 py-3 rounded-lg bg-dt-gray-light border border-gray-600 focus:border-sunfai-yellow focus:outline-none text-white placeholder-gray-400 transition">
+                    </div>
+                </div>
+                <!-- Image input removed as per request -->
+                <button type="submit"
+                    class="w-full bg-sunfai-yellow text-black font-bold py-3 rounded-full hover:bg-yellow-400 transition duration-300 uppercase tracking-wide">
+                    Aggiungi Evento
+                </button>
+            </form>
+
+            <div class="mt-8 space-y-4 max-h-[500px] overflow-y-auto pr-2 custom-scrollbar" id="eventsList">
+                <!-- Events items will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check Auth
+        async function checkAuth() {
+            const res = await fetch('/api/check-auth');
+            const data = await res.json();
+            if (!data.authenticated) {
+                window.location.href = '/admin/login.html';
+            }
+        }
+        checkAuth();
+
+        // Logout
+        async function logout() {
+            await fetch('/api/logout', { method: 'POST' });
+            window.location.href = '/admin/login.html';
+        }
+
+        // --- NEWS LOGIC ---
+        let editingNewsId = null;
+
+        async function loadNews() {
+            const res = await fetch('/api/news');
+            const news = await res.json();
+            const list = document.getElementById('newsList');
+            list.innerHTML = news.map(item => `
+                <div class="bg-dt-gray-light p-4 rounded-xl flex justify-between items-center border border-gray-700 hover:border-gray-500 transition">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-white text-lg">${item.title}</h3>
+                        <p class="text-sm text-gray-400">${item.date.split('T')[0]}</p>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button class="bg-blue-600 hover:bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-bold transition" onclick='editNews(${JSON.stringify(item).replace(/'/g, "&#39;")})'>
+                            Modifica
+                        </button>
+                        <button class="bg-red-600 hover:bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold transition" onclick="deleteNews(${item.id})">
+                            Elimina
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function editNews(item) {
+            editingNewsId = item.id;
+            const form = document.getElementById('newsForm');
+            form.title.value = item.title;
+            form.content.value = item.content;
+            form.date.value = item.date.split('T')[0];
+
+            const submitBtn = form.querySelector('button[type="submit"]');
+            submitBtn.textContent = 'Modifica Notizia';
+            submitBtn.classList.remove('bg-sunfai-yellow', 'text-black', 'hover:bg-yellow-400');
+            submitBtn.classList.add('bg-blue-600', 'text-white', 'hover:bg-blue-500');
+
+            if (!document.getElementById('cancelNews')) {
+                const cancelBtn = document.createElement('button');
+                cancelBtn.id = 'cancelNews';
+                cancelBtn.textContent = 'Annulla';
+                cancelBtn.type = 'button';
+                cancelBtn.className = 'w-full mt-2 bg-gray-600 text-white font-bold py-3 rounded-full hover:bg-gray-500 transition duration-300 uppercase tracking-wide';
+                cancelBtn.onclick = resetNewsForm;
+                form.appendChild(cancelBtn);
+            }
+        }
+
+        function resetNewsForm() {
+            editingNewsId = null;
+            const form = document.getElementById('newsForm');
+            form.reset();
+
+            const submitBtn = form.querySelector('button[type="submit"]');
+            submitBtn.textContent = 'Aggiungi Notizia';
+            submitBtn.classList.add('bg-sunfai-yellow', 'text-black', 'hover:bg-yellow-400');
+            submitBtn.classList.remove('bg-blue-600', 'text-white', 'hover:bg-blue-500');
+
+            const cancelBtn = document.getElementById('cancelNews');
+            if (cancelBtn) cancelBtn.remove();
+        }
+
+        document.getElementById('newsForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+
+            let url = '/api/news';
+            let method = 'POST';
+
+            if (editingNewsId) {
+                url = `/api/news/${editingNewsId}`;
+                method = 'PUT';
+            }
+
+            try {
+                const res = await fetch(url, {
+                    method: method,
+                    body: formData
+                });
+
+                if (res.ok) {
+                    resetNewsForm();
+                    loadNews();
+                } else {
+                    const error = await res.json();
+                    alert('Errore: ' + (error.error || 'Errore durante il salvataggio'));
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Errore di connessione');
+            }
+        });
+
+        async function deleteNews(id) {
+            if (confirm('Sei sicuro di voler eliminare questa notizia?')) {
+                const res = await fetch(`/api/news/${id}`, { method: 'DELETE' });
+                if (res.ok) loadNews();
+            }
+        }
+
+        // --- EVENTS LOGIC ---
+        let editingEventId = null;
+
+        async function loadEvents() {
+            const res = await fetch('/api/events');
+            const events = await res.json();
+            const list = document.getElementById('eventsList');
+            list.innerHTML = events.map(item => `
+               <div class="bg-dt-gray-light p-4 rounded-xl flex justify-between items-center border border-gray-700 hover:border-gray-500 transition">
+                    <div class="flex-1">
+                        <h3 class="font-bold text-white text-lg">${item.title}</h3>
+                        <p class="text-sm text-gray-400">${item.date.split('T')[0]} - ${item.location}</p>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button class="bg-blue-600 hover:bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-bold transition" onclick='editEvent(${JSON.stringify(item).replace(/'/g, "&#39;")})'>
+                            Modifica
+                        </button>
+                        <button class="bg-red-600 hover:bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold transition" onclick="deleteEvent(${item.id})">
+                            Elimina
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function editEvent(item) {
+            editingEventId = item.id;
+            const form = document.getElementById('eventsForm');
+            form.title.value = item.title;
+            form.description.value = item.description;
+            form.date.value = item.date.split('T')[0];
+            form.location.value = item.location;
+
+            const submitBtn = form.querySelector('button[type="submit"]');
+            submitBtn.textContent = 'Modifica Evento';
+            submitBtn.classList.remove('bg-sunfai-yellow', 'text-black', 'hover:bg-yellow-400');
+            submitBtn.classList.add('bg-blue-600', 'text-white', 'hover:bg-blue-500');
+
+            if (!document.getElementById('cancelEvent')) {
+                const cancelBtn = document.createElement('button');
+                cancelBtn.id = 'cancelEvent';
+                cancelBtn.textContent = 'Annulla';
+                cancelBtn.type = 'button';
+                cancelBtn.className = 'w-full mt-2 bg-gray-600 text-white font-bold py-3 rounded-full hover:bg-gray-500 transition duration-300 uppercase tracking-wide';
+                cancelBtn.onclick = resetEventForm;
+                form.appendChild(cancelBtn);
+            }
+        }
+
+        function resetEventForm() {
+            editingEventId = null;
+            const form = document.getElementById('eventsForm');
+            form.reset();
+
+            const submitBtn = form.querySelector('button[type="submit"]');
+            submitBtn.textContent = 'Aggiungi Evento';
+            submitBtn.classList.add('bg-sunfai-yellow', 'text-black', 'hover:bg-yellow-400');
+            submitBtn.classList.remove('bg-blue-600', 'text-white', 'hover:bg-blue-500');
+
+            const cancelBtn = document.getElementById('cancelEvent');
+            if (cancelBtn) cancelBtn.remove();
+        }
+
+        document.getElementById('eventsForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+
+            let url = '/api/events';
+            let method = 'POST';
+
+            if (editingEventId) {
+                url = `/api/events/${editingEventId}`;
+                method = 'PUT';
+            }
+
+            try {
+                const res = await fetch(url, {
+                    method: method,
+                    body: formData
+                });
+
+                if (res.ok) {
+                    resetEventForm();
+                    loadEvents();
+                } else {
+                    const error = await res.json();
+                    alert('Errore: ' + (error.error || 'Errore durante il salvataggio'));
+                }
+            } catch (err) {
+                console.error(err);
+                alert('Errore di connessione');
+            }
+        });
+
+        async function deleteEvent(id) {
+            if (confirm('Sei sicuro di voler eliminare questo evento?')) {
+                const res = await fetch(`/api/events/${id}`, { method: 'DELETE' });
+                if (res.ok) loadEvents();
+            }
+        }
+
+        // Custom Scrollbar CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            .custom-scrollbar::-webkit-scrollbar {
+                width: 8px;
+            }
+            .custom-scrollbar::-webkit-scrollbar-track {
+                background: #1a1a1a; 
+            }
+            .custom-scrollbar::-webkit-scrollbar-thumb {
+                background: #333333; 
+                border-radius: 4px;
+            }
+            .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+                background: #666666; 
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initial Load
+        loadNews();
+        loadEvents();
+    </script>
+</body>
+
+</html>

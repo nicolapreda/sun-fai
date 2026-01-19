@@ -12,6 +12,7 @@ module.exports = {
         'dt-gray': '#1a1a1a',
         'dt-gray-light': '#333333',
         'dt-gray-lighter': '#666666',
+        'sunfai-yellow': '#FFD600',
       },
       animation: {
         'fade-in': 'fadeIn 0.8s ease-in-out',

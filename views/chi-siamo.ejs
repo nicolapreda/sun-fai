@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chi Siamo | Sun-Fai Cooperativa - Energia Condivisa</title>
+    <meta name="description"
+        content="Scopri la storia di Sun-Fai, la cooperativa energetica nata nella Bergamasca. Conosci il nostro team, i nostri valori e la nostra missione per un futuro sostenibile e solidale." />
+    <link rel="icon" href="/assets/logo-min.png" type="image/png" />
+
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'sunfai-yellow': '#FFD600',
+                        'sunfai-black': '#000000',
+                        'sunfai-white': '#FFFFFF',
+                    },
+                    fontFamily: {
+                        'sans': ['"Glacial Indifference"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        @font-face {
+            font-family: 'Glacial Indifference';
+            src: url('./assets/GlacialIndifference-Regular.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Glacial Indifference';
+            src: url('./assets/GlacialIndifference-Bold.otf') format('opentype');
+            font-weight: bold;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Glacial Indifference';
+            src: url('./assets/GlacialIndifference-Italic.otf') format('opentype');
+            font-weight: normal;
+            font-style: italic;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-family: 'Glacial Indifference', sans-serif;
+        }
+
+        .yellow-brush-bg {
+            position: relative;
+            display: inline-block;
+            padding: 0 10px;
+        }
+
+        .yellow-brush-bg::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            right: -10px;
+            top: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='400' height='80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5,40 Q50,10 100,35 T200,40 T300,35 T395,40' stroke='%23FFD600' stroke-width='70' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            z-index: -1;
+            transform: rotate(-1deg);
+        }
+    </style>
+</head>
+
+<body class="bg-white">
+
+    <!-- NAVIGATION -->
+    <!-- NAVIGATION -->
+    <%- include('partials/navbar') %>
+
+        <!-- INTRO SECTION -->
+        <section class="pt-40 pb-20 bg-white">
+            <div class="max-w-7xl mx-auto px-6">
+                <h1 class="text-5xl md:text-6xl font-black mb-12 relative inline-block">
+                    Chi siamo
+                    <span class="absolute bottom-3 left-0 w-full h-6 bg-sunfai-yellow -z-10 transform -rotate-1"></span>
+                </h1>
+
+                <div class="flex flex-col lg:flex-row gap-16 items-center">
+                    <div class="w-full lg:w-1/2">
+                        <p class="text-xl md:text-2xl leading-relaxed mb-8">
+                            Sun-Fai è una <span class="font-black">cooperativa </span> che nasce nella <span
+                                class="font-black">Bergamasca</span> e si estende oggi in tutta <span
+                                class="font-black">Italia</span>. Crediamo in un nuovo modello di <span
+                                class="font-black">energia condivisa</span>, dove le <span class="font-black">Comunità
+                                Energetiche Rinnovabili (CER)</span> diventano lo strumento per creare <span
+                                class="font-black">valore sociale</span>, generare <span class="font-black">risparmio
+                                reale</span> favorire un <span class="font-black">futuro</span> più pulito e <span
+                                class="font-black">responsabile</span>. Con Sun-Fai, ogni scelta energetica diventa un
+                            passo
+                            verso il <span class="font-black">bene comune</span>.
+                        </p>
+
+                        <div class="flex flex-col gap-4">
+                            <a href="#"
+                                class="block w-full border-2 border-black rounded-full py-4 px-8 font-bold text-center text-lg uppercase hover:bg-black hover:text-white transition">Leggi
+                                lo
+                                Statuto</a>
+                            <a href="#"
+                                class="block w-full border-2 border-black rounded-full py-4 px-8 font-bold text-center text-lg uppercase hover:bg-black hover:text-white transition">Leggi
+                                il
+                                Regolamento interno</a>
+                        </div>
+                    </div>
+                    <div class="w-full lg:w-1/2">
+                        <div class="rounded-3xl overflow-hidden shadow-2xl">
+                            <img src="./assets/chi-siamo-2.webp" alt="Sun-Fai Team" class="w-full h-auto">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PERCHÉ PARTECIPARE SECTION -->
+        <section class="py-20 bg-black text-white">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-4xl md:text-5xl font-black mb-16 relative inline-block text-white">
+                    Perchè partecipare?
+                    <span
+                        class="absolute bottom-2 left-0 w-full h-4 bg-sunfai-yellow -z-10 transform -rotate-1 opacity-80"></span>
+                </h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                    <!-- Item 1 -->
+                    <div class="flex flex-col items-center group">
+                        <div class="mb-6 transform transition duration-500 group-hover:scale-110">
+                            <img src="./assets/riduci-costi-energetici.png" alt="Riduci i costi energetici"
+                                class="h-32 object-contain">
+                        </div>
+                        <h3 class="text-3xl md:text-4xl font-black mb-4 leading-tight">Riduci i costi<br>energetici</h3>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="flex flex-col items-center group">
+                        <div class="mb-6 transform transition duration-500 group-hover:scale-110">
+                            <img src="./assets/riduci-le-emissioni.png" alt="Riduci le emissioni"
+                                class="h-32 object-contain">
+                        </div>
+                        <h3 class="text-3xl md:text-4xl font-black mb-4 leading-tight">Riduci le<br>emissioni</h3>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="flex flex-col items-center group">
+                        <div class="mb-6 transform transition duration-500 group-hover:scale-110">
+                            <img src="./assets/sostieni-territorio.png" alt="Sostieni il tuo territorio"
+                                class="h-32 object-contain">
+                        </div>
+                        <h3 class="text-3xl md:text-4xl font-black mb-4 leading-tight">Sostieni il tuo<br>territorio
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONSIGLIO DI AMMINISTRAZIONE SECTION -->
+        <section class="py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-4xl md:text-5xl font-black mb-16 relative inline-block">
+                    Il Consiglio Di<br>Amministrazione
+                    <span class="absolute bottom-2 left-0 w-full h-4 bg-sunfai-yellow -z-10 transform -rotate-1"></span>
+                </h2>
+
+                <!-- Fix: Centered grid with max-width to use space better for 2 items -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mx-auto">
+                    <!-- Member 1: Stefano Crivena (Presidente) -->
+                    <div
+                        class="group relative w-full aspect-square bg-gray-200 rounded-2xl overflow-hidden cursor-pointer shadow-lg">
+                        <img src="./assets/chi-siamo/andrea-belotti.jpeg" alt="Stefano Crivena"
+                            class="w-full h-full object-cover grayscale transition duration-500 group-hover:scale-110 block">
+
+                        <div
+                            class="absolute inset-0 bg-[#1a1a1a] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <span
+                                class="text-sunfai-yellow font-bold uppercase tracking-wider mb-2 text-sm">Presidente</span>
+                            <h3 class="text-white text-3xl font-black leading-tight mb-6">
+                                Stefano<br>Crivena
+                            </h3>
+                            <div
+                                class="w-10 h-10 rounded-full border border-white flex items-center justify-center text-white group-hover:bg-white group-hover:text-black transition duration-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                    stroke="currentColor" class="w-5 h-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Member 2: Andrea Belotti (Vicepresidente) -->
+                    <div
+                        class="group relative w-full aspect-square bg-gray-200 rounded-2xl overflow-hidden cursor-pointer shadow-lg">
+                        <img src="./assets/chi-siamo/andrea-belotti.jpeg" alt="Andrea Belotti"
+                            class="w-full h-full object-cover grayscale transition duration-500 group-hover:scale-110 block">
+
+                        <div
+                            class="absolute inset-0 bg-[#1a1a1a] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <span
+                                class="text-sunfai-yellow font-bold uppercase tracking-wider mb-2 text-sm">Vicepresidente</span>
+                            <h3 class="text-white text-3xl font-black leading-tight mb-6">
+                                Andrea<br>Belotti
+                            </h3>
+                            <div
+                                class="w-10 h-10 rounded-full border border-white flex items-center justify-center text-white group-hover:bg-white group-hover:text-black transition duration-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                    stroke="currentColor" class="w-5 h-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Member 3: Consigliere -->
+                    <div
+                        class="group relative w-full aspect-square bg-gray-200 rounded-2xl overflow-hidden cursor-pointer shadow-lg">
+                        <img src="./assets/chi-siamo/andrea-belotti.jpeg" alt="Consigliere"
+                            class="w-full h-full object-cover grayscale transition duration-500 group-hover:scale-110 block">
+
+                        <div
+                            class="absolute inset-0 bg-[#1a1a1a] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <span
+                                class="text-sunfai-yellow font-bold uppercase tracking-wider mb-2 text-sm">Consigliere</span>
+                            <h3 class="text-white text-3xl font-black leading-tight mb-6">
+                                Nome<br>Cognome
+                            </h3>
+                            <div
+                                class="w-10 h-10 rounded-full border border-white flex items-center justify-center text-white group-hover:bg-white group-hover:text-black transition duration-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                    stroke="currentColor" class="w-5 h-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Member 4: Consigliere -->
+                    <div
+                        class="group relative w-full aspect-square bg-gray-200 rounded-2xl overflow-hidden cursor-pointer shadow-lg">
+                        <img src="./assets/chi-siamo/andrea-belotti.jpeg" alt="Consigliere"
+                            class="w-full h-full object-cover grayscale transition duration-500 group-hover:scale-110 block">
+
+                        <div
+                            class="absolute inset-0 bg-[#1a1a1a] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <span
+                                class="text-sunfai-yellow font-bold uppercase tracking-wider mb-2 text-sm">Consigliere</span>
+                            <h3 class="text-white text-3xl font-black leading-tight mb-6">
+                                Nome<br>Cognome
+                            </h3>
+                            <div
+                                class="w-10 h-10 rounded-full border border-white flex items-center justify-center text-white group-hover:bg-white group-hover:text-black transition duration-300">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                    stroke="currentColor" class="w-5 h-5">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- I COLLABORATORI SECTION -->
+        <section class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-6">
+                <!-- Title -->
+                <h2 class="text-4xl md:text-5xl font-black mb-16 relative inline-block">
+                    I collaboratori
+                    <span class="absolute bottom-2 left-0 w-full h-4 bg-sunfai-yellow -z-10 transform -rotate-1"></span>
+                </h2>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <!-- Collaborators Loop (Placeholders for now, using the new style) -->
+                    <% for(let i=0; i<4; i++) { %>
+                        <div
+                            class="group relative w-full aspect-square bg-gray-200 rounded-xl overflow-hidden cursor-pointer shadow-md">
+                            <!-- Image (Grayscale) -->
+                            <img src="./assets/chi-siamo/andrea-belotti.jpeg" alt="Collaboratore <%= i+1 %>"
+                                class="w-full h-full object-cover grayscale transition duration-500 group-hover:scale-110 block">
+
+                            <!-- Hover Overlay -->
+                            <div
+                                class="absolute inset-0 bg-[#1a1a1a] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                                <h4 class="text-white text-xl font-bold leading-tight mb-4">
+                                    Nome<br>Cognome
+                                </h4>
+                                <!-- Smaller Arrow Icon -->
+                                <div
+                                    class="w-8 h-8 rounded-full border border-white flex items-center justify-center text-white group-hover:bg-white group-hover:text-black transition duration-300">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="2" stroke="currentColor" class="w-4 h-4">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                </div>
+            </div>
+        </section>
+
+        <%- include('partials/footer') %>
+
+
+
+</body>
+
+</html>
