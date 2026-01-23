@@ -7,11 +7,11 @@ module.exports = {
         'sans': ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
       },
       colors: {
-        'dt-black': '#000000',
-        'dt-white': '#FFFFFF',
-        'dt-gray': '#1a1a1a',
-        'dt-gray-light': '#333333',
-        'dt-gray-lighter': '#666666',
+        'sunfai-black': '#000000',
+        'sunfai-white': '#FFFFFF',
+        'sunfai-gray': '#1a1a1a',
+        'sunfai-gray-light': '#333333',
+        'sunfai-gray-lighter': '#666666',
         'sunfai-yellow': '#FFD600',
       },
       animation: {

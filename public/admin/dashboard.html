@@ -14,10 +14,10 @@
                 extend: {
                     colors: {
                         'sunfai-yellow': '#FFD600',
-                        'dt-black': '#000000',
-                        'dt-white': '#FFFFFF',
-                        'dt-gray': '#1a1a1a',
-                        'dt-gray-light': '#333333',
+                        'sunfai-black': '#000000',
+                        'sunfai-white': '#FFFFFF',
+                        'sunfai-gray': '#1a1a1a',
+                        'sunfai-gray-light': '#333333',
                     },
                     fontFamily: {
                         'sans': ['Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
@@ -28,9 +28,9 @@
     </script>
 </head>
 
-<body class="bg-dt-black text-white font-sans min-h-screen flex flex-col">
+<body class="bg-sunfai-black text-white font-sans min-h-screen flex flex-col">
     <!-- Header -->
-    <div class="bg-dt-gray px-6 py-4 shadow-md flex justify-between items-center sticky top-0 z-50">
+    <div class="bg-sunfai-gray px-6 py-4 shadow-md flex justify-between items-center sticky top-0 z-50">
         <h1 class="text-2xl font-bold text-sunfai-yellow">Dashboard Amministrazione</h1>
         <button class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-full transition duration-300"
             onclick="logout()">
@@ -40,29 +40,29 @@
 
     <div class="container mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl">
         <!-- News Section -->
-        <div class="bg-dt-gray p-8 rounded-3xl shadow-lg border border-dt-gray-light">
-            <h2 class="text-3xl font-bold mb-6 text-white border-b border-dt-gray-light pb-4">Gestione Notizie</h2>
+        <div class="bg-sunfai-gray p-8 rounded-3xl shadow-lg border border-sunfai-gray-light">
+            <h2 class="text-3xl font-bold mb-6 text-white border-b border-sunfai-gray-light pb-4">Gestione Notizie</h2>
 
             <form id="newsForm" class="space-y-6">
                 <div class="space-y-2">
                     <label class="block text-sm font-bold text-gray-300">Titolo</label>
                     <input type="text" name="title" required
-                        class="w-full px-4 py-3 rounded-lg bg-dt-gray-light border border-gray-600 focus:border-sunfai-yellow focus:outline-none text-white placeholder-gray-400 transition">
+                        class="w-full px-4 py-3 rounded-lg bg-sunfai-gray-light border border-gray-600 focus:border-sunfai-yellow focus:outline-none text-white placeholder-gray-400 transition">
                 </div>
                 <div class="space-y-2">
                     <label class="block text-sm font-bold text-gray-300">Contenuto</label>
                     <textarea name="content" rows="4" required
-                        class="w-full px-4 py-3 rounded-lg bg-dt-gray-light border border-gray-600 focus:border-sunfai-yellow focus:outline-none text-white placeholder-gray-400 transition resize-none"></textarea>
+                        class="w-full px-4 py-3 rounded-lg bg-sunfai-gray-light border border-gray-600 focus:border-sunfai-yellow focus:outline-none text-white placeholder-gray-400 transition resize-none"></textarea>
                 </div>
                 <div class="space-y-2">
                     <label class="block text-sm font-bold text-gray-300">Data</label>
                     <input type="date" name="date" required
-                        class="w-full px-4 py-3 rounded-lg bg-dt-gray-light border border-gray-600 focus:border-sunfai-yellow focus:outline-none text-white placeholder-gray-400 transition">
+                        class="w-full px-4 py-3 rounded-lg bg-sunfai-gray-light border border-gray-600 focus:border-sunfai-yellow focus:outline-none text-white placeholder-gray-400 transition">
                 </div>
                 <div class="space-y-2">
                     <label class="block text-sm font-bold text-gray-300">Immagine</label>
                     <input type="file" name="image" accept="image/*"
-                        class="w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-dt-gray-light file:text-white hover:file:bg-gray-600">
+                        class="w-full text-sm text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-sunfai-gray-light file:text-white hover:file:bg-gray-600">
                 </div>
                 <button type="submit"
                     class="w-full bg-sunfai-yellow text-black font-bold py-3 rounded-full hover:bg-yellow-400 transition duration-300 uppercase tracking-wide">
@@ -76,30 +76,30 @@
         </div>
 
         <!-- Events Section -->
-        <div class="bg-dt-gray p-8 rounded-3xl shadow-lg border border-dt-gray-light">
-            <h2 class="text-3xl font-bold mb-6 text-white border-b border-dt-gray-light pb-4">Gestione Eventi</h2>
+        <div class="bg-sunfai-gray p-8 rounded-3xl shadow-lg border border-sunfai-gray-light">
+            <h2 class="text-3xl font-bold mb-6 text-white border-b border-sunfai-gray-light pb-4">Gestione Eventi</h2>
 
             <form id="eventsForm" class="space-y-6">
                 <div class="space-y-2">
                     <label class="block text-sm font-bold text-gray-300">Titolo</label>
                     <input type="text" name="title" required
-                        class="w-full px-4 py-3 rounded-lg bg-dt-gray-light border border-gray-600 focus:border-sunfai-yellow focus:outline-none text-white placeholder-gray-400 transition">
+                        class="w-full px-4 py-3 rounded-lg bg-sunfai-gray-light border border-gray-600 focus:border-sunfai-yellow focus:outline-none text-white placeholder-gray-400 transition">
                 </div>
                 <div class="space-y-2">
                     <label class="block text-sm font-bold text-gray-300">Descrizione</label>
                     <textarea name="description" rows="4" required
-                        class="w-full px-4 py-3 rounded-lg bg-dt-gray-light border border-gray-600 focus:border-sunfai-yellow focus:outline-none text-white placeholder-gray-400 transition resize-none"></textarea>
+                        class="w-full px-4 py-3 rounded-lg bg-sunfai-gray-light border border-gray-600 focus:border-sunfai-yellow focus:outline-none text-white placeholder-gray-400 transition resize-none"></textarea>
                 </div>
                 <div class="grid grid-cols-2 gap-4">
                     <div class="space-y-2">
                         <label class="block text-sm font-bold text-gray-300">Data</label>
                         <input type="date" name="date" required
-                            class="w-full px-4 py-3 rounded-lg bg-dt-gray-light border border-gray-600 focus:border-sunfai-yellow focus:outline-none text-white placeholder-gray-400 transition">
+                            class="w-full px-4 py-3 rounded-lg bg-sunfai-gray-light border border-gray-600 focus:border-sunfai-yellow focus:outline-none text-white placeholder-gray-400 transition">
                     </div>
                     <div class="space-y-2">
                         <label class="block text-sm font-bold text-gray-300">Luogo</label>
                         <input type="text" name="location" required
-                            class="w-full px-4 py-3 rounded-lg bg-dt-gray-light border border-gray-600 focus:border-sunfai-yellow focus:outline-none text-white placeholder-gray-400 transition">
+                            class="w-full px-4 py-3 rounded-lg bg-sunfai-gray-light border border-gray-600 focus:border-sunfai-yellow focus:outline-none text-white placeholder-gray-400 transition">
                     </div>
                 </div>
                 <!-- Image input removed as per request -->
@@ -140,7 +140,7 @@
             const news = await res.json();
             const list = document.getElementById('newsList');
             list.innerHTML = news.map(item => `
-                <div class="bg-dt-gray-light p-4 rounded-xl flex justify-between items-center border border-gray-700 hover:border-gray-500 transition">
+                <div class="bg-sunfai-gray-light p-4 rounded-xl flex justify-between items-center border border-gray-700 hover:border-gray-500 transition">
                     <div class="flex-1">
                         <h3 class="font-bold text-white text-lg">${item.title}</h3>
                         <p class="text-sm text-gray-400">${item.date.split('T')[0]}</p>
@@ -240,7 +240,7 @@
             const events = await res.json();
             const list = document.getElementById('eventsList');
             list.innerHTML = events.map(item => `
-               <div class="bg-dt-gray-light p-4 rounded-xl flex justify-between items-center border border-gray-700 hover:border-gray-500 transition">
+               <div class="bg-sunfai-gray-light p-4 rounded-xl flex justify-between items-center border border-gray-700 hover:border-gray-500 transition">
                     <div class="flex-1">
                         <h3 class="font-bold text-white text-lg">${item.title}</h3>
                         <p class="text-sm text-gray-400">${item.date.split('T')[0]} - ${item.location}</p>
