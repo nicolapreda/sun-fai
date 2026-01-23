@@ -4,6 +4,7 @@ const session = require('express-session');
 const bcrypt = require('bcrypt');
 const multer = require('multer');
 const db = require('./src/database');
+const { getInstantPowers } = require("./src/ardake.service")
 
 const app = express();
 
@@ -45,13 +46,20 @@ const requireAuth = (req, res, next) => {
 };
 
 // Page Routes
-app.get('/', (req, res) => {
-    db.all("SELECT * FROM news ORDER BY date DESC LIMIT 3", [], (err, news) => {
+app.get('/', async (req, res) => {
+    db.all("SELECT * FROM news ORDER BY date DESC LIMIT 3", [], async (err, news) => {
         if (err) return res.status(500).send(err.message);
         
-        db.all("SELECT * FROM events WHERE date >= date('now') ORDER BY date ASC LIMIT 3", [], (err, events) => {
+        db.all("SELECT * FROM events WHERE date >= date('now') ORDER BY date ASC LIMIT 3", [], async (err, events) => {
             if (err) return res.status(500).send(err.message);
-            res.render('index', { news, events });
+            
+            try {
+                const energyData = await getInstantPowers();
+                res.render('index', { news, events, dailyMonitor: energyData.data, totalPower: energyData.powerSum });
+            } catch (error) {
+                console.error('Error fetching instant powers:', error);
+                res.render('index', { news, events, instantPowers: [], totalPower24h: 0 });
+            }
         });
     });
 });

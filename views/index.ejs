@@ -414,7 +414,7 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="text-6xl font-black mb-2">249 kWp</div>
+                                <div class="text-6xl font-black mb-2">249 kWh</div>
                                 <div class="text-sm font-bold uppercase tracking-wider">Potenza totale dei<br>nostri
                                     impianti</div>
                             </div>
@@ -423,12 +423,11 @@
                                     target="_blank" rel="noopener noreferrer" class="group">
                                     <div
                                         class="text-6xl font-black mb-2 text-sunfai-yellow group-hover:text-white transition duration-300">
-                                        <span id="stats-current-energy">--</span> <span class="text-white">kWp</span>
+                                        <span id="stats-current-energy"><%= totalPower ? parseFloat(totalPower).toFixed(0) : '--' %></span> <span class="text-white">kWh</span>
                                     </div>
                                     <div
                                         class="text-sm font-bold uppercase tracking-wider group-hover:text-sunfai-yellow transition duration-300">
-                                        Energia disponibile<br>in questo
-                                        momento</div>
+                                        Energia erogata<br>nelle ultime 24h</div>
                                 </a>
                             </div>
                             <div>
