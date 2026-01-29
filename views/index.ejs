@@ -173,6 +173,68 @@
             background: #FFD600;
             clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 100%, 0 80%);
         }
+
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+            pointer-events: none;
+            /* Prevents interaction with controls */
+        }
+
+        .video-iframe {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 177.77777778vh;
+            /* 100 * 16 / 9 */
+            height: 56.25vw;
+            min-width: 100%;
+            min-height: 100%;
+            transform: translate(-50%, -50%);
+        }
+
+        @media (min-aspect-ratio: 16/9) {
+            .video-iframe {
+                height: 56.25vw;
+                /* 100 * 9 / 16 */
+                width: 100vw;
+            }
+        }
+
+        @media (max-aspect-ratio: 16/9) {
+            .video-iframe {
+                width: 177.77777778vh;
+                /* 100 * 16 / 9 */
+                height: 100vh;
+            }
+        }
+
+        .video-iframe {
+            /* Force scale to hide potential edge controls */
+            transform: translate(-50%, -50%) scale(1.2);
+        }
+
+        /* Fade in animation to hide initial loading/play button */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .video-container iframe {
+            animation: fadeIn 1s ease-in-out 0.5s forwards;
+            opacity: 0;
+            /* Start invisible */
+        }
     </style>
 </head>
 
@@ -182,12 +244,18 @@
     <%- include('partials/navbar') %>
         <!-- HERO SECTION -->
         <section id="home" class="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
-            <!-- Background Video -->
-            <video autoplay muted loop playsinline class="absolute top-0 left-0 w-full h-full object-cover z-0">
-                <source src="./assets/Video%20Hero%20Sun-Fai.mov" type="video/mp4">
-                <source src="./assets/Video%20Hero%20Sun-Fai.mov" type="video/quicktime">
-                Your browser does not support the video tag.
-            </video>
+            <!-- Background Video CDN -->
+            <div class="video-container">
+                <img src="https://vz-58918a1e-773.b-cdn.net/09d398d0-0e08-4210-9cb4-94038f3dcdda/preview.webp?v=1769351307"
+                    alt="Sun-Fai Video Preview"
+                    class="absolute top-0 left-0 w-full h-full object-cover blur-sm scale-110 transform transition duration-700">
+                <iframe
+                    src="https://iframe.mediadelivery.net/embed/585843/09d398d0-0e08-4210-9cb4-94038f3dcdda?autoplay=true&loop=true&muted=true&preload=true&responsive=true"
+                    loading="eager" class="video-iframe" frameborder="0"
+                    allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+                    allowfullscreen="true">
+                </iframe>
+            </div>
 
             <!-- Overlay for better text readability -->
             <div class="absolute top-0 left-0 w-full h-full bg-black/30 z-10"></div>
@@ -423,7 +491,9 @@
                                     target="_blank" rel="noopener noreferrer" class="group">
                                     <div
                                         class="text-6xl font-black mb-2 text-sunfai-yellow group-hover:text-white transition duration-300">
-                                        <span id="stats-current-energy"><%= totalPower ? parseFloat(totalPower).toFixed(0) : '--' %></span> <span class="text-white">kWh</span>
+                                        <span id="stats-current-energy">
+                                            <%= totalPower ? parseFloat(totalPower).toFixed(0) : '--' %>
+                                        </span> <span class="text-white">kWh</span>
                                     </div>
                                     <div
                                         class="text-sm font-bold uppercase tracking-wider group-hover:text-sunfai-yellow transition duration-300">
@@ -725,7 +795,8 @@
                 <div class="flex flex-col lg:flex-row gap-12">
                     <% if (news && news.length> 0) { %>
                         <!-- Featured Article (First Item) -->
-                        <div class="w-full lg:w-1/2 group cursor-pointer">
+                        <div class="w-full lg:w-1/2 group cursor-pointer"
+                            onclick="window.location.href='/notizie/<%= news[0].id %>'">
                             <div class="relative rounded-2xl overflow-hidden shadow-xl mb-6 aspect-[4/3]">
                                 <img src="<%= news[0].image || './assets/placeholder.jpg' %>" alt="<%= news[0].title %>"
                                     class="w-full h-full object-cover transform transition duration-500 group-hover:scale-105">
@@ -740,7 +811,7 @@
                                     </h3>
                                 </div>
                             </div>
-                            <a href="#"
+                            <a href="/notizie/<%= news[0].id %>"
                                 class="bg-sunfai-yellow text-black px-6 py-2 rounded-full font-bold text-sm inline-block hover:bg-yellow-500 transition">
                                 Leggi l'articolo
                             </a>
@@ -753,7 +824,7 @@
                                     <h3 class="text-2xl font-black mb-2 leading-tight">
                                         <%= item.title %>
                                     </h3>
-                                    <a href="#"
+                                    <a href="/notizie/<%= item.id %>"
                                         class="text-black font-medium underline hover:text-sunfai-yellow transition">
                                         Clicca per leggere l'articolo
                                     </a>

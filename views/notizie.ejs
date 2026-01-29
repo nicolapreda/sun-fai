@@ -112,12 +112,17 @@
 
                             container.innerHTML = news.map(item => `
                             <article>
-                                ${item.image ? `<img src="${item.image}" alt="${item.title}" class="w-full h-64 object-cover rounded-xl mb-6">` : ''}
-                                <h2 class="text-3xl font-black mb-4 leading-tight">${item.title}</h2>
+                                ${item.image ? `<a href="/notizie/${item.id}" class="block mb-6"><img src="${item.image}" alt="${item.title}" class="w-full h-64 object-cover rounded-xl transition duration-300 hover:opacity-90"></a>` : ''}
+                                <h2 class="text-3xl font-black mb-4 leading-tight">
+                                    <a href="/notizie/${item.id}" class="hover:text-sunfai-yellow transition">${item.title}</a>
+                                </h2>
                                 <p class="text-sm text-gray-500 mb-2">${new Date(item.date).toLocaleDateString('it-IT')}</p>
                                 <p class="text-lg text-gray-700 leading-relaxed mb-4">
-                                    ${item.content.replace(/\n/g, '<br>')}
+                                    ${item.content.substring(0, 300).replace(/\n/g, '<br>')}...
                                 </p>
+                                <a href="/notizie/${item.id}" class="inline-block bg-black text-white px-6 py-2 rounded-full font-bold text-sm hover:bg-sunfai-yellow hover:text-black transition">
+                                    Leggi tutto
+                                </a>
                             </article>
                             <hr class="border-gray-200">
                         `).join('');

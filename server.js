@@ -58,7 +58,7 @@ app.get('/', async (req, res) => {
                 res.render('index', { news, events, dailyMonitor: energyData.data, totalPower: energyData.powerSum });
             } catch (error) {
                 console.error('Error fetching instant powers:', error);
-                res.render('index', { news, events, instantPowers: [], totalPower24h: 0 });
+                res.render('index', { news, events, instantPowers: [], totalPower: 0 });
             }
         });
     });
@@ -109,6 +109,21 @@ app.get('/api/check-auth', (req, res) => {
     } else {
         res.json({ authenticated: false });
     }
+});
+
+// Single News Page Route
+app.get('/notizie/:id', (req, res) => {
+    const id = req.params.id;
+    db.get("SELECT * FROM news WHERE id = ?", [id], (err, row) => {
+        if (err) return res.status(500).send(err.message);
+        if (!row) {
+            // Handle legacy/friendly URLs if needed, or simply 404
+             // Verify if it is a legacy html file request, redirect to main otherwise
+             if(id.endsWith('.html')) return res.redirect('/notizie');
+             return res.status(404).send('Notizia non trovata');
+        }
+        res.render('notizia', { newsItem: row });
+    });
 });
 
 // News API
