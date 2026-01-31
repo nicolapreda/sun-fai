@@ -180,7 +180,7 @@
                     <!-- Member 1: Francesco Crivena (Presidente) -->
                     <div
                         class="group relative w-full aspect-square bg-gray-200 rounded-2xl overflow-hidden cursor-pointer shadow-lg">
-                        <img src="./assets/chi-siamo/francesco-crivena.jpeg" alt="Francesco Crivena"
+                        <img src="./assets/chi-siamo/Francesco Crivena.png" alt="Francesco Crivena"
                             class="w-full h-full object-cover transition duration-500 group-hover:scale-110 block">
 
                         <div
@@ -204,7 +204,7 @@
                     <!-- Member 2: Andrea Zonca (Vicepresidente) -->
                     <div
                         class="group relative w-full aspect-square bg-gray-200 rounded-2xl overflow-hidden cursor-pointer shadow-lg">
-                        <img src="./assets/chi-siamo/andrea-belotti.jpeg" alt="Andrea Zonca"
+                        <img src="./assets/chi-siamo/Andrea Zonca.png" alt="Andrea Zonca"
                             class="w-full h-full object-cover transition duration-500 group-hover:scale-110 block">
 
                         <div
@@ -228,7 +228,7 @@
                     <!-- Member 3: Stefano Crivena (Consigliere) -->
                     <div
                         class="group relative w-full aspect-square bg-gray-200 rounded-2xl overflow-hidden cursor-pointer shadow-lg">
-                        <img src="./assets/chi-siamo/stefano-crivena.jpeg" alt="Stefano Crivena"
+                        <img src="./assets/chi-siamo/Stefano crivena.png" alt="Stefano Crivena"
                             class="w-full h-full object-cover transition duration-500 group-hover:scale-110 block">
 
                         <div
@@ -252,7 +252,7 @@
                     <!-- Member 4: Alceste Perico (Consigliere) -->
                     <div
                         class="group relative w-full aspect-square bg-gray-200 rounded-2xl overflow-hidden cursor-pointer shadow-lg">
-                        <img src="./assets/chi-siamo/alceste-perico.jpeg" alt="Alceste Perico"
+                        <img src="./assets/chi-siamo/Alceste Perico.png" alt="Alceste Perico"
                             class="w-full h-full object-cover transition duration-500 group-hover:scale-110 block">
 
                         <div
@@ -286,32 +286,30 @@
                 </h2>
 
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <!-- Collaborators Loop (Placeholders for now, using the new style) -->
-                    <% for(let i=0; i<4; i++) { %>
-                        <div
-                            class="group relative w-full aspect-square bg-gray-200 rounded-xl overflow-hidden cursor-pointer shadow-md">
-                            <!-- Image (Grayscale) -->
-                            <img src="./assets/chi-siamo/andrea-belotti.jpeg" alt="Collaboratore <%= i+1 %>"
-                                class="w-full h-full object-cover grayscale transition duration-500 group-hover:scale-110 block">
-
-                            <!-- Hover Overlay -->
+                    <!-- Collaborators Loop -->
+                    <% const collaborators=[ { name: 'Andrea Belotti' , img: 'Andrea Belotti.png' }, {
+                        name: 'Beatrice Parimbelli' , img: 'Beatrice Parimbelli.png' }, { name: 'Benedetta Petrò' ,
+                        img: 'Benedetta Petrò.png' }, { name: 'Chiara Crivena' , img: 'Chiara Crivena.png' }, {
+                        name: 'Giorgio Venezia' , img: 'Giorgio Venezia.png' }, { name: 'Lorenzo Ciresa' ,
+                        img: 'Lorenzo Ciresa.png' }, { name: 'Nicholas Previtali' , img: 'Nicholas Previtali.png' }, {
+                        name: 'Nicola Preda' , img: 'Nicola Preda.png' }, { name: 'Simone Mazzoleni' ,
+                        img: 'Simone Mazzoleni.png' } ]; %>
+                        <% collaborators.forEach(collab=> { %>
                             <div
-                                class="absolute inset-0 bg-[#1a1a1a] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                                <h4 class="text-white text-xl font-bold leading-tight mb-4">
-                                    Nome<br>Cognome
-                                </h4>
-                                <!-- Smaller Arrow Icon -->
+                                class="group relative w-full aspect-square bg-gray-200 rounded-xl overflow-hidden cursor-pointer shadow-md">
+                                <!-- Image (Color) -->
+                                <img src="./assets/chi-siamo/<%= collab.img %>" alt="<%= collab.name %>"
+                                    class="w-full h-full object-cover transition duration-500 group-hover:scale-110 block">
+
+                                <!-- Hover Overlay -->
                                 <div
-                                    class="w-8 h-8 rounded-full border border-white flex items-center justify-center text-white group-hover:bg-white group-hover:text-black transition duration-300">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                        stroke-width="2" stroke="currentColor" class="w-4 h-4">
-                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                            d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-                                    </svg>
+                                    class="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                                    <h4 class="text-white text-3xl font-black leading-tight mb-2">
+                                        <%= collab.name.split(' ')[0] %><br><%= collab.name.split(' ').slice(1).join(' ') %>
+                                    </h4>
                                 </div>
                             </div>
-                        </div>
-                        <% } %>
+                    <% }); %>
                 </div>
             </div>
         </section>

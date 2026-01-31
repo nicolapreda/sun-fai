@@ -113,6 +113,20 @@
                     <label class="block text-sm font-bold text-gray-700 uppercase tracking-wide">Immagine</label>
                     <input type="file" name="image" accept="image/*"
                         class="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-sunfai-yellow file:text-black hover:file:bg-yellow-400 transition cursor-pointer">
+                    <!-- Image Preview Container -->
+                    <div id="imagePreviewContainer" class="hidden mt-4 relative inline-block">
+                        <img id="imagePreview" src="" alt="Preview" class="h-32 w-auto rounded-lg shadow-md">
+                        <button type="button" id="removeImageBtn"
+                            class="absolute -top-2 -right-2 bg-red-600 text-white rounded-full p-1 hover:bg-red-700 transition shadow-sm"
+                            title="Rimuovi immagine">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+                    <input type="hidden" name="removeImage" id="removeImageInput" value="false">
                 </div>
                 <button type="submit"
                     class="w-full bg-sunfai-yellow text-black font-bold py-3 rounded-full hover:bg-yellow-400 transition duration-300 uppercase tracking-wide shadow-sm">
@@ -281,6 +295,30 @@
                 cancelBtn.onclick = resetNewsForm;
                 form.appendChild(cancelBtn);
             }
+
+            // Image Preview logic
+            const previewContainer = document.getElementById('imagePreviewContainer');
+            const previewImage = document.getElementById('imagePreview');
+            const removeInput = document.getElementById('removeImageInput');
+
+            if (item.image) {
+                previewImage.src = item.image;
+                previewContainer.classList.remove('hidden');
+                removeInput.value = 'false';
+            } else {
+                previewContainer.classList.add('hidden');
+                removeInput.value = 'false';
+            }
+
+            // Setup remove button listener (ensure we don't duplicate listeners if called multiple times, though replacing innerHTML or cloning might be safer, here simple implementation)
+            const removeBtn = document.getElementById('removeImageBtn');
+            // Remove old listener to avoid duplicates if any (simple hack: clone node or just direct assignment if no other listeners)
+            // Better: direct assignment since we are in a function
+            removeBtn.onclick = function () {
+                previewContainer.classList.add('hidden');
+                removeInput.value = 'true';
+                // Also clear the file input if any was selected, though optional
+            };
         }
 
         function resetNewsForm() {
@@ -295,6 +333,11 @@
 
             const cancelBtn = document.getElementById('cancelNews');
             if (cancelBtn) cancelBtn.remove();
+
+            // Reset Preview
+            document.getElementById('imagePreviewContainer').classList.add('hidden');
+            document.getElementById('removeImageInput').value = 'false';
+            document.getElementById('imagePreview').src = '';
         }
 
         document.getElementById('newsForm').addEventListener('submit', async (e) => {

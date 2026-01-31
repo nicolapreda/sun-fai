@@ -47,7 +47,7 @@ const requireAuth = (req, res, next) => {
 
 // Page Routes
 app.get('/', async (req, res) => {
-    db.all("SELECT * FROM news ORDER BY date DESC LIMIT 3", [], async (err, news) => {
+    db.all("SELECT * FROM news ORDER BY date DESC, id DESC LIMIT 3", [], async (err, news) => {
         if (err) return res.status(500).send(err.message);
         
         db.all("SELECT * FROM events WHERE date >= date('now') ORDER BY date ASC LIMIT 3", [], async (err, events) => {
@@ -128,7 +128,7 @@ app.get('/notizie/:id', (req, res) => {
 
 // News API
 app.get('/api/news', (req, res) => {
-    db.all("SELECT * FROM news ORDER BY date DESC", [], (err, rows) => {
+    db.all("SELECT * FROM news ORDER BY date DESC, id DESC", [], (err, rows) => {
         if (err) return res.status(500).json({ error: err.message });
         res.json(rows);
     });
@@ -155,7 +155,10 @@ app.put('/api/news/:id', requireAuth, upload.single('image'), (req, res) => {
     let query = "UPDATE news SET title = ?, content = ?, date = ? WHERE id = ?";
     let params = [title, content, date, id];
 
-    if (image) {
+    if (req.body.removeImage === 'true') {
+        query = "UPDATE news SET title = ?, content = ?, date = ?, image = NULL WHERE id = ?";
+        params = [title, content, date, id];
+    } else if (image) {
         query = "UPDATE news SET title = ?, content = ?, date = ?, image = ? WHERE id = ?";
         params = [title, content, date, image, id];
     }

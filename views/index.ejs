@@ -232,8 +232,27 @@
 
         .video-container iframe {
             animation: fadeIn 1s ease-in-out 0.5s forwards;
+            animation: fadeIn 1s ease-in-out 0.5s forwards;
             opacity: 0;
             /* Start invisible */
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
         }
     </style>
 </head>
@@ -343,26 +362,68 @@
 
 
         <!-- ARDAKÉ SECTION -->
-        <section class="py-20 bg-white">
-            <div class="max-w-4xl mx-auto px-6 text-center">
-                <div class="flex flex-col items-center gap-8 mb-12">
-                    <a href="https://sun-fai.org/gestione_cer/file_server/monitoring_energy.html" target="_blank"
-                        rel="noopener noreferrer">
-                        <img src="./assets/ardake_logo.png" alt="Ardaké Logo"
-                            class="h-64 object-contain hover:scale-105 transition duration-300">
-                    </a>
+        <section class="py-20 bg-white text-black relative overflow-hidden">
+
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="flex flex-col lg:flex-row items-center gap-16">
+
+                    <!-- Left Column: Content -->
+                    <div class="w-full lg:w-1/2 text-left">
+                        <div
+                            class="inline-block bg-sunfai-yellow text-black px-4 py-1 rounded-full font-bold uppercase text-xs mb-6 tracking-wider shadow-sm">
+                            Piattaforma</div>
+                        <h2 class="text-5xl md:text-7xl font-black mb-6 leading-tight text-black">
+                            Ardaké
+                        </h2>
+                        <p class="text-xl md:text-2xl text-gray-800 mb-10 leading-relaxed">
+                            La tua energia, sempre sotto controllo.<br>
+                            <span class="text-black font-bold bg-sunfai-yellow/20 px-2 rounded-lg">Monitora
+                                consumi</span>, produzione e risparmio in tempo reale.
+                        </p>
+
+                        <!-- Stats Grid -->
+                        <div class="grid grid-cols-2 gap-8 mb-10">
+                            <div class="bg-gray-50 p-6 rounded-2xl shadow-sm border border-gray-100">
+                                <div class="text-4xl lg:text-5xl font-black text-black mb-2">350 <span
+                                        class="text-sunfai-yellow text-2xl lg:text-3xl">kWh</span></div>
+                                <div class="text-xs lg:text-sm font-bold uppercase tracking-wider text-gray-500">Energia
+                                    erogata (24h)</div>
+                            </div>
+                            <div class="bg-gray-50 p-6 rounded-2xl shadow-sm border border-gray-100">
+                                <div class="text-4xl lg:text-5xl font-black text-black mb-2">100+</div>
+                                <div class="text-xs lg:text-sm font-bold uppercase tracking-wider text-gray-500">Soci
+                                    attivi</div>
+                            </div>
+                        </div>
+
+                        <a href="https://sun-fai.org/gestione_cer/file_server/monitoring_energy.html" target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center gap-4 bg-black text-white rounded-full px-8 py-4 font-bold text-lg hover:bg-sunfai-yellow hover:text-black transition duration-300 shadow-xl group">
+                            Accedi alla piattaforma
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                                stroke="currentColor" class="w-5 h-5 group-hover:translate-x-1 transition-transform">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <!-- Right Column: Creative Mockup -->
+                    <div class="w-full lg:w-1/2 relative flex justify-center">
+                        <div class="relative w-full max-w-lg aspect-square flex items-center justify-center">
+                            <!-- Glow effect behind -->
+                            <div
+                                class="absolute w-2/3 h-2/3 bg-sunfai-yellow blur-[60px] opacity-25 rounded-full animate-pulse mx-auto">
+                            </div>
+
+                            <!-- Mockup Image with Floating Animation & Mask -->
+                            <img src="./assets/ardake-mockup.png" alt="Ardaké Platform Mockup"
+                                style="-webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%); mask-image: linear-gradient(to bottom, black 75%, transparent 100%);"
+                                class="relative w-full h-auto object-contain animate-float hover:scale-105 transition duration-500 drop-shadow-2xl z-10">
+                        </div>
+                    </div>
+
                 </div>
-
-                <p class="text-xl text-gray-700 mb-12">
-                    Ardaké è la nostra nuovissima piattaforma che ti permette di monitorare in tempo reale quanta
-                    energia
-                    mettiamo a disposizione delle nostre CER.
-                </p>
-
-                <a href="https://sun-fai.org/gestione_cer/file_server/monitoring_energy.html" target="_blank"
-                    rel="noopener noreferrer" class="text-sm font-bold underline hover:text-sunfai-yellow transition">
-                    Clicca sul logo per accedere alla piattaforma
-                </a>
             </div>
         </section>
 
@@ -519,268 +580,86 @@
         </section>
 
         <!-- Dicono di noi Section -->
-        <section class="py-20 bg-white overflow-hidden">
+        <section class="py-20 bg-white">
             <div class="max-w-7xl mx-auto px-6">
                 <h2 class="text-4xl md:text-5xl font-black mb-16 relative inline-block">
                     Dicono di noi
                     <span class="absolute bottom-2 left-0 w-full h-4 bg-sunfai-yellow -z-10 transform -rotate-1"></span>
                 </h2>
-            </div>
 
-            <!-- Infinite Horizontal Scroll Container -->
-            <div id="carousel-scroll-container" class="relative w-full overflow-x-auto scrollbar-hide">
-                <div id="carousel-track" class="flex space-x-6 w-max flex-nowrap">
-
-                    <!-- Original Set of Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <!-- Card 1 -->
                     <div
-                        class="w-[300px] md:w-[400px] border-2 border-black rounded-3xl p-8 flex flex-col bg-white shadow-lg hover:shadow-xl transition relative group flex-shrink-0">
+                        class="w-full border-2 border-black rounded-3xl p-8 flex flex-col bg-white shadow-lg hover:shadow-xl transition relative group">
                         <div
                             class="absolute top-0 right-0 w-16 h-16 bg-sunfai-yellow opacity-20 rounded-bl-full rounded-tr-3xl -z-10 group-hover:opacity-100 transition duration-300">
                         </div>
                         <h3 class="text-xl font-black mb-4">"L'energia che nasce dalla comunità"</h3>
                         <p class="text-sm text-gray-700 mb-8 flex-grow leading-relaxed">
-                            Sun-Fai è stata premiata all'IFEC e ha ricevuto il premio Cali 2024 per l'innovazione
-                            sociale ed energetica. La cooperativa di Dalmine è stata riconosciuta come modello
-                            regionale.
+                            La cooperativa Sun-Fai di Dalmine ha ricevuto due importanti riconoscimenti nazionali: il
+                            premio IFEC e il premio Cali 2024, assegnati durante l'Italian Forum of Energy Communities.
+                            L'iniziativa, promossa dal WEC Italia e dall'Energy Center del Politecnico di Torino,
+                            valorizza i progetti più innovativi nel campo delle comunità energetiche. Sun-Fai è stata
+                            premiata per la sua capacità di coniugare innovazione sociale, sostenibilità economica e
+                            sviluppo tecnologico, diventando un punto di riferimento nel panorama delle CER italiane.
+                            <br><br>
+                            «Siamo orgogliosi e sorpresi di questo risultato – commenta Francesco Crivena, presidente di
+                            Sun-Fai. È un riconoscimento che appartiene a tutte le persone che partecipano alla
+                            cooperativa e a chi ci sostiene ogni giorno».
                         </p>
                         <div class="mt-auto">
-                            <div class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">L'Eco di
-                                Bergamo</div>
-                            <a href="#"
-                                class="inline-block text-black font-bold border-b-2 border-sunfai-yellow hover:bg-sunfai-yellow hover:border-transparent transition px-1">Leggi
-                                l'articolo</a>
+                            <div class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Articolo di
+                                Pietro Giudici<br>Pubblicato su L'Eco di Bergamo</div>
                         </div>
                     </div>
 
                     <!-- Card 2 -->
                     <div
-                        class="w-[300px] md:w-[400px] border-2 border-black rounded-3xl p-8 flex flex-col bg-white shadow-lg hover:shadow-xl transition relative group flex-shrink-0">
+                        class="w-full border-2 border-black rounded-3xl p-8 flex flex-col bg-white shadow-lg hover:shadow-xl transition relative group">
                         <div
                             class="absolute top-0 right-0 w-16 h-16 bg-sunfai-yellow opacity-20 rounded-bl-full rounded-tr-3xl -z-10 group-hover:opacity-100 transition duration-300">
                         </div>
-                        <h3 class="text-xl font-black mb-4">"Coi risparmi in bolletta, più aiuti a chi ne ha
-                            bisogno"</h3>
+                        <h3 class="text-xl font-black mb-4">"Coi risparmi in bolletta, più aiuti a chi ne ha bisogno"
+                        </h3>
                         <p class="text-sm text-gray-700 mb-8 flex-grow leading-relaxed">
-                            La cooperativa Sun-Fai sostiene il Centro di primo ascolto di Dalmine finanziando
-                            l'installazione di un impianto fotovoltaico. Il risparmio annuale permetterà al Centro
-                            di offrire più pacchi alimentari.
+                            La cooperativa Sun-Fai ha avviato un nuovo progetto solidale: finanzierà l'installazione di
+                            un impianto fotovoltaico sul Centro di primo ascolto interparrocchiale di Dalmine. Il
+                            risparmio stimato di 900 euro annui si tradurrà in oltre 30 pacchi alimentari in più per le
+                            famiglie in difficoltà.
+                            <br><br>
+                            «Abbiamo individuato la soluzione più efficiente e vantaggiosa per trasformare il risparmio
+                            energetico in sostegno concreto» spiega Francesco Crivena. Un'iniziativa che coniuga energia
+                            pulita e valore sociale.
                         </p>
                         <div class="mt-auto">
-                            <div class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">L'Eco di
-                                Bergamo</div>
-                            <a href="#"
-                                class="inline-block text-black font-bold border-b-2 border-sunfai-yellow hover:bg-sunfai-yellow hover:border-transparent transition px-1">Leggi
-                                l'articolo</a>
+                            <div class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Articolo di
+                                Pietro Giudici<br>Pubblicato su L'Eco di Bergamo</div>
                         </div>
                     </div>
 
                     <!-- Card 3 -->
                     <div
-                        class="w-[300px] md:w-[400px] border-2 border-black rounded-3xl p-8 flex flex-col bg-white shadow-lg hover:shadow-xl transition relative group flex-shrink-0">
+                        class="w-full border-2 border-black rounded-3xl p-8 flex flex-col bg-white shadow-lg hover:shadow-xl transition relative group">
                         <div
                             class="absolute top-0 right-0 w-16 h-16 bg-sunfai-yellow opacity-20 rounded-bl-full rounded-tr-3xl -z-10 group-hover:opacity-100 transition duration-300">
                         </div>
-                        <h3 class="text-xl font-black mb-4">"La cooperativa di giovani che scommette sulle CER"</h3>
+                        <h3 class="text-xl font-black mb-4">"La cooperativa di giovani che scommette sulle Cer"</h3>
                         <p class="text-sm text-gray-700 mb-8 flex-grow leading-relaxed">
-                            Sun-Fai è una cooperativa di giovani di Dalmine che promuove equità sociale, risparmio
-                            energetico e sostenibilità. Offre supporto a privati, enti pubblici e imprese.
+                            Nata dalla curiosità e dall'impegno di un gruppo di giovani, Sun-Fai è oggi una realtà
+                            consolidata capace di offrire formazione e consulenza su povertà energetica e sostenibilità.
+                            Il nome unisce il "sun" (sole) all'invito dialettale "fai" (fare), simbolo di
+                            collaborazione.
+                            <br><br>
+                            L'obiettivo è accompagnare privati, enti e imprese nella transizione energetica, unendo
+                            innovazione tecnologica e attenzione alle persone per creare valore condiviso sul
+                            territorio.
                         </p>
                         <div class="mt-auto">
-                            <div class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Corriere
-                                della Sera</div>
-                            <a href="#"
-                                class="inline-block text-black font-bold border-b-2 border-sunfai-yellow hover:bg-sunfai-yellow hover:border-transparent transition px-1">Leggi
-                                l'articolo</a>
+                            <div class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Articolo
+                                originale di Pietro Giudici<br>Pubblicato su L'Eco di Bergamo</div>
                         </div>
                     </div>
-
-                    <!-- Card 4 -->
-                    <div
-                        class="w-[300px] md:w-[400px] border-2 border-black rounded-3xl p-8 flex flex-col bg-white shadow-lg hover:shadow-xl transition relative group flex-shrink-0">
-                        <div
-                            class="absolute top-0 right-0 w-16 h-16 bg-sunfai-yellow opacity-20 rounded-bl-full rounded-tr-3xl -z-10 group-hover:opacity-100 transition duration-300">
-                        </div>
-                        <h3 class="text-xl font-black mb-4">"Innovazione e Sostenibilità"</h3>
-                        <p class="text-sm text-gray-700 mb-8 flex-grow leading-relaxed">
-                            Un modello virtuoso che mette al centro le persone e l'ambiente. Sun-Fai dimostra come
-                            le comunità energetiche siano il futuro del nostro territorio.
-                        </p>
-                        <div class="mt-auto">
-                            <div class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Bergamo News
-                            </div>
-                            <a href="#"
-                                class="inline-block text-black font-bold border-b-2 border-sunfai-yellow hover:bg-sunfai-yellow hover:border-transparent transition px-1">Leggi
-                                l'articolo</a>
-                        </div>
-                    </div>
-
-                    <!-- Card 5 -->
-                    <div
-                        class="w-[300px] md:w-[400px] border-2 border-black rounded-3xl p-8 flex flex-col bg-white shadow-lg hover:shadow-xl transition relative group flex-shrink-0">
-                        <div
-                            class="absolute top-0 right-0 w-16 h-16 bg-sunfai-yellow opacity-20 rounded-bl-full rounded-tr-3xl -z-10 group-hover:opacity-100 transition duration-300">
-                        </div>
-                        <h3 class="text-xl font-black mb-4">"Un esempio per tutta Italia"</h3>
-                        <p class="text-sm text-gray-700 mb-8 flex-grow leading-relaxed">
-                            Dalmine si conferma all'avanguardia grazie all'impegno di Sun-Fai. La cooperativa è
-                            stata citata come esempio di eccellenza nel panorama nazionale.
-                        </p>
-                        <div class="mt-auto">
-                            <div class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">La Repubblica
-                            </div>
-                            <a href="#"
-                                class="inline-block text-black font-bold border-b-2 border-sunfai-yellow hover:bg-sunfai-yellow hover:border-transparent transition px-1">Leggi
-                                l'articolo</a>
-                        </div>
-                    </div>
-
-                    <!-- Card 6 -->
-                    <div
-                        class="w-[300px] md:w-[400px] border-2 border-black rounded-3xl p-8 flex flex-col bg-white shadow-lg hover:shadow-xl transition relative group flex-shrink-0">
-                        <div
-                            class="absolute top-0 right-0 w-16 h-16 bg-sunfai-yellow opacity-20 rounded-bl-full rounded-tr-3xl -z-10 group-hover:opacity-100 transition duration-300">
-                        </div>
-                        <h3 class="text-xl font-black mb-4">"Energia pulita a Km 0"</h3>
-                        <p class="text-sm text-gray-700 mb-8 flex-grow leading-relaxed">
-                            Produrre, consumare e condividere energia rinnovabile: la sfida vinta da Sun-Fai che
-                            coinvolge cittadini e imprese in un progetto comune.
-                        </p>
-                        <div class="mt-auto">
-                            <div class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Green Me
-                            </div>
-                            <a href="#"
-                                class="inline-block text-black font-bold border-b-2 border-sunfai-yellow hover:bg-sunfai-yellow hover:border-transparent transition px-1">Leggi
-                                l'articolo</a>
-                        </div>
-                    </div>
-
-                    <!-- Duplicate Set for Infinite Loop -->
-                    <!-- Card 1 Dupe -->
-                    <div
-                        class="w-[300px] md:w-[400px] border-2 border-black rounded-3xl p-8 flex flex-col bg-white shadow-lg hover:shadow-xl transition relative group flex-shrink-0">
-                        <div
-                            class="absolute top-0 right-0 w-16 h-16 bg-sunfai-yellow opacity-20 rounded-bl-full rounded-tr-3xl -z-10 group-hover:opacity-100 transition duration-300">
-                        </div>
-                        <h3 class="text-xl font-black mb-4">"L'energia che nasce dalla comunità"</h3>
-                        <p class="text-sm text-gray-700 mb-8 flex-grow leading-relaxed">
-                            Sun-Fai è stata premiata all'IFEC e ha ricevuto il premio Cali 2024 per l'innovazione
-                            sociale ed energetica. La cooperativa di Dalmine è stata riconosciuta come modello
-                            regionale.
-                        </p>
-                        <div class="mt-auto">
-                            <div class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">L'Eco di
-                                Bergamo</div>
-                            <a href="#"
-                                class="inline-block text-black font-bold border-b-2 border-sunfai-yellow hover:bg-sunfai-yellow hover:border-transparent transition px-1">Leggi
-                                l'articolo</a>
-                        </div>
-                    </div>
-
-                    <!-- Card 2 Dupe -->
-                    <div
-                        class="w-[300px] md:w-[400px] border-2 border-black rounded-3xl p-8 flex flex-col bg-white shadow-lg hover:shadow-xl transition relative group flex-shrink-0">
-                        <div
-                            class="absolute top-0 right-0 w-16 h-16 bg-sunfai-yellow opacity-20 rounded-bl-full rounded-tr-3xl -z-10 group-hover:opacity-100 transition duration-300">
-                        </div>
-                        <h3 class="text-xl font-black mb-4">"Coi risparmi in bolletta, più aiuti a chi ne ha
-                            bisogno"</h3>
-                        <p class="text-sm text-gray-700 mb-8 flex-grow leading-relaxed">
-                            La cooperativa Sun-Fai sostiene il Centro di primo ascolto di Dalmine finanziando
-                            l'installazione di un impianto fotovoltaico. Il risparmio annuale permetterà al Centro
-                            di offrire più pacchi alimentari.
-                        </p>
-                        <div class="mt-auto">
-                            <div class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">L'Eco di
-                                Bergamo</div>
-                            <a href="#"
-                                class="inline-block text-black font-bold border-b-2 border-sunfai-yellow hover:bg-sunfai-yellow hover:border-transparent transition px-1">Leggi
-                                l'articolo</a>
-                        </div>
-                    </div>
-
-                    <!-- Card 3 Dupe -->
-                    <div
-                        class="w-[300px] md:w-[400px] border-2 border-black rounded-3xl p-8 flex flex-col bg-white shadow-lg hover:shadow-xl transition relative group flex-shrink-0">
-                        <div
-                            class="absolute top-0 right-0 w-16 h-16 bg-sunfai-yellow opacity-20 rounded-bl-full rounded-tr-3xl -z-10 group-hover:opacity-100 transition duration-300">
-                        </div>
-                        <h3 class="text-xl font-black mb-4">"La cooperativa di giovani che scommette sulle CER"</h3>
-                        <p class="text-sm text-gray-700 mb-8 flex-grow leading-relaxed">
-                            Sun-Fai è una cooperativa di giovani di Dalmine che promuove equità sociale, risparmio
-                            energetico e sostenibilità. Offre supporto a privati, enti pubblici e imprese.
-                        </p>
-                        <div class="mt-auto">
-                            <div class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Corriere
-                                della Sera</div>
-                            <a href="#"
-                                class="inline-block text-black font-bold border-b-2 border-sunfai-yellow hover:bg-sunfai-yellow hover:border-transparent transition px-1">Leggi
-                                l'articolo</a>
-                        </div>
-                    </div>
-
-                    <!-- Card 4 Dupe -->
-                    <div
-                        class="w-[300px] md:w-[400px] border-2 border-black rounded-3xl p-8 flex flex-col bg-white shadow-lg hover:shadow-xl transition relative group flex-shrink-0">
-                        <div
-                            class="absolute top-0 right-0 w-16 h-16 bg-sunfai-yellow opacity-20 rounded-bl-full rounded-tr-3xl -z-10 group-hover:opacity-100 transition duration-300">
-                        </div>
-                        <h3 class="text-xl font-black mb-4">"Innovazione e Sostenibilità"</h3>
-                        <p class="text-sm text-gray-700 mb-8 flex-grow leading-relaxed">
-                            Un modello virtuoso che mette al centro le persone e l'ambiente. Sun-Fai dimostra come
-                            le comunità energetiche siano il futuro del nostro territorio.
-                        </p>
-                        <div class="mt-auto">
-                            <div class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Bergamo News
-                            </div>
-                            <a href="#"
-                                class="inline-block text-black font-bold border-b-2 border-sunfai-yellow hover:bg-sunfai-yellow hover:border-transparent transition px-1">Leggi
-                                l'articolo</a>
-                        </div>
-                    </div>
-
-                    <!-- Card 5 Dupe -->
-                    <div
-                        class="w-[300px] md:w-[400px] border-2 border-black rounded-3xl p-8 flex flex-col bg-white shadow-lg hover:shadow-xl transition relative group flex-shrink-0">
-                        <div
-                            class="absolute top-0 right-0 w-16 h-16 bg-sunfai-yellow opacity-20 rounded-bl-full rounded-tr-3xl -z-10 group-hover:opacity-100 transition duration-300">
-                        </div>
-                        <h3 class="text-xl font-black mb-4">"Un esempio per tutta Italia"</h3>
-                        <p class="text-sm text-gray-700 mb-8 flex-grow leading-relaxed">
-                            Dalmine si conferma all'avanguardia grazie all'impegno di Sun-Fai. La cooperativa è
-                            stata citata come esempio di eccellenza nel panorama nazionale.
-                        </p>
-                        <div class="mt-auto">
-                            <div class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">La Repubblica
-                            </div>
-                            <a href="#"
-                                class="inline-block text-black font-bold border-b-2 border-sunfai-yellow hover:bg-sunfai-yellow hover:border-transparent transition px-1">Leggi
-                                l'articolo</a>
-                        </div>
-                    </div>
-
-                    <!-- Card 6 Dupe -->
-                    <div
-                        class="w-[300px] md:w-[400px] border-2 border-black rounded-3xl p-8 flex flex-col bg-white shadow-lg hover:shadow-xl transition relative group flex-shrink-0">
-                        <div
-                            class="absolute top-0 right-0 w-16 h-16 bg-sunfai-yellow opacity-20 rounded-bl-full rounded-tr-3xl -z-10 group-hover:opacity-100 transition duration-300">
-                        </div>
-                        <h3 class="text-xl font-black mb-4">"Energia pulita a Km 0"</h3>
-                        <p class="text-sm text-gray-700 mb-8 flex-grow leading-relaxed">
-                            Produrre, consumare e condividere energia rinnovabile: la sfida vinta da Sun-Fai che
-                            coinvolge cittadini e imprese in un progetto comune.
-                        </p>
-                        <div class="mt-auto">
-                            <div class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Green Me
-                            </div>
-                            <a href="#"
-                                class="inline-block text-black font-bold border-b-2 border-sunfai-yellow hover:bg-sunfai-yellow hover:border-transparent transition px-1">Leggi
-                                l'articolo</a>
-                        </div>
-                    </div>
-
                 </div>
-            </div>
             </div>
         </section>
 
