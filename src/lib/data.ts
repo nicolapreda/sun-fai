@@ -49,9 +49,10 @@ export async function getLatestNews(limit = 3): Promise<NewsItem[]> {
     if (!connection) return [];
 
     try {
-        const [rows] = await connection.execute<NewsItem[]>(
-            'SELECT * FROM news ORDER BY date DESC LIMIT ?',
-            [limit]
+        // Ensure limit is a number
+        const numLimit = Number(limit);
+        const [rows] = await connection.query<NewsItem[]>(
+            `SELECT * FROM news ORDER BY date DESC LIMIT ${numLimit}`
         );
         return rows;
     } catch (error) {
@@ -67,7 +68,7 @@ export async function getNewsById(id: number): Promise<NewsItem | undefined> {
     if (!connection) return undefined;
 
     try {
-        const [rows] = await connection.execute<NewsItem[]>('SELECT * FROM news WHERE id = ?', [id]);
+        const [rows] = await connection.query<NewsItem[]>('SELECT * FROM news WHERE id = ?', [id]);
         return rows[0];
     } catch (error) {
         console.error(`Error fetching news by id ${id}:`, error);
@@ -83,9 +84,9 @@ export async function getUpcomingEvents(limit = 3): Promise<EventItem[]> {
 
     try {
         // MySQL uses CURDATE() or NOW()
-        const [rows] = await connection.execute<EventItem[]>(
-            "SELECT * FROM events WHERE date >= CURDATE() ORDER BY date ASC LIMIT ?",
-            [limit]
+        const numLimit = Number(limit);
+        const [rows] = await connection.query<EventItem[]>(
+            `SELECT * FROM events WHERE date >= CURDATE() ORDER BY date ASC LIMIT ${numLimit}`
         );
         return rows;
     } catch (error) {
