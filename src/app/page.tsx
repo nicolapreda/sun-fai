@@ -322,6 +322,7 @@ export default async function Home() {
                               alt={news[0].title}
                               fill
                               className="object-cover transform transition duration-500 group-hover:scale-105"
+                              unoptimized={!!news[0].image}
                            />
                            <div className="absolute bottom-0 left-0 p-6 bg-gradient-to-t from-black to-transparent w-full">
                               <span className="text-white text-sm font-bold mb-2 block">

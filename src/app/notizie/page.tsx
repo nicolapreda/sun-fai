@@ -29,6 +29,7 @@ export default async function Notizie() {
                         alt={item.title}
                         fill
                         className="object-cover transition duration-300 hover:opacity-90"
+                        unoptimized
                       />
                     </Link>
                   )}

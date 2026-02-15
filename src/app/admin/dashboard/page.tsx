@@ -238,7 +238,13 @@ export default function AdminDashboard() {
                         <div className="flex items-center gap-4">
                             {item.image && (
                                 <div className="relative w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden bg-gray-100">
-                                    <Image src={item.image} alt={item.title} fill className="object-cover" />
+                                    <Image 
+                                        src={item.image} 
+                                        alt={item.title} 
+                                        fill 
+                                        className="object-cover" 
+                                        unoptimized
+                                    />
                                 </div>
                             )}
                             <div>

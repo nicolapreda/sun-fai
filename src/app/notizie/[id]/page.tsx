@@ -58,6 +58,7 @@ export default async function Notizia({ params }: { params: Promise<{ id: string
                 alt={newsItem.title} 
                 fill
                 className="object-cover"
+                unoptimized
             />
           </div>
         )}
