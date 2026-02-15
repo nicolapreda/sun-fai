@@ -1,0 +1,23 @@
+
+services:
+  nextjs:
+    build:
+      context: .
+    image: sunfai-nextjs
+    container_name: sunfai
+    ports:
+      - "3006:3000"
+    restart: unless-stopped
+    env_file:
+      - .env
+      - .env.local
+    environment:
+      - AUTH_TRUST_HOST=true
+      - AUTH_URL=https://sun-fai.org
+    networks:
+      - nginx
+
+networks:
+  nginx:
+    name: nginx_network
+    external: true

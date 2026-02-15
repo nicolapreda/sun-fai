@@ -1,0 +1,6 @@
+curl -X POST https://eu5.fusionsolar.huawei.com/thirdData/login \
+  -H "Content-Type: application/json" \
+  -d '{"userName":"your_api_username", "systemCode":"your_api_password"}' \
+  -c cookies.txt
+
+PAUSE
