@@ -5,7 +5,7 @@ import MapWrapper from '@/components/MapWrapper';
 import { getLatestNews, getUpcomingEvents } from '@/lib/data';
 import { getInstantPowers } from '@/lib/services/ardake';
 
-export const revalidate = 300; 
+export const dynamic = 'force-dynamic';
 
 export default async function Home() {
   const news = await getLatestNews(3);
