@@ -1,4 +1,3 @@
-```typescript
 import { NextResponse } from 'next/server';
 import { getMysqlConnection } from '@/lib/mysql';
 import { cookies } from 'next/headers';
@@ -13,12 +12,12 @@ async function isAuthenticated() {
 export async function GET() {
     const connection = await getMysqlConnection();
     if (!connection) return NextResponse.json({ error: 'Database error' }, { status: 500 });
-    
+
     try {
         const [rows] = await connection.query('SELECT * FROM news ORDER BY date DESC');
         return NextResponse.json(rows);
     } catch (error) {
-         return NextResponse.json({ error: 'Failed to fetch news' }, { status: 500 });
+        return NextResponse.json({ error: 'Failed to fetch news' }, { status: 500 });
     } finally {
         await connection.end();
     }
@@ -32,12 +31,12 @@ export async function POST(req: Request) {
     const content = formData.get('content') as string;
     const date = formData.get('date') as string;
     const imageFile = formData.get('image') as File | null;
-    
+
     let imagePath = null;
     if (imageFile && imageFile.size > 0) {
         const buffer = Buffer.from(await imageFile.arrayBuffer());
         const filename = Date.now() + '_' + imageFile.name.replaceAll(' ', '_');
-        
+
         try {
             await writeFile(
                 path.join(process.cwd(), 'public/uploads', filename),
@@ -65,4 +64,3 @@ export async function POST(req: Request) {
         await connection.end();
     }
 }
-```
