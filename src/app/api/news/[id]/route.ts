@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { getMysqlConnection } from '@/lib/mysql';
 import { cookies } from 'next/headers';
+import { writeFile } from 'fs/promises';
+import path from 'path';
 
 async function isAuthenticated() {
     const cookieStore = await cookies();
@@ -32,12 +34,33 @@ export async function PUT(req: Request, { params }: { params: Promise<{ id: stri
     const title = formData.get('title') as string;
     const content = formData.get('content') as string;
     const date = formData.get('date') as string;
+    const imageFile = formData.get('image') as File | null;
+
+    let imagePath = null;
+    if (imageFile && imageFile.size > 0) {
+        const buffer = Buffer.from(await imageFile.arrayBuffer());
+        const filename = Date.now() + '_' + imageFile.name.replaceAll(' ', '_');
+
+        try {
+            await writeFile(
+                path.join(process.cwd(), 'public/uploads', filename),
+                buffer
+            );
+            imagePath = '/uploads/' + filename;
+        } catch (error) {
+            console.error('Error saving file:', error);
+        }
+    }
 
     const connection = await getMysqlConnection();
     if (!connection) return NextResponse.json({ error: 'Database error' }, { status: 500 });
 
     try {
-        await connection.execute('UPDATE news SET title = ?, content = ?, date = ? WHERE id = ?', [title, content, date, id]);
+        if (imagePath) {
+            await connection.execute('UPDATE news SET title = ?, content = ?, date = ?, image = ? WHERE id = ?', [title, content, date, imagePath, id]);
+        } else {
+            await connection.execute('UPDATE news SET title = ?, content = ?, date = ? WHERE id = ?', [title, content, date, id]);
+        }
         return NextResponse.json({ message: 'Updated successfully' });
     } catch (error) {
         return NextResponse.json({ error: 'Update failed' }, { status: 500 });

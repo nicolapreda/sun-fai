@@ -1,6 +1,9 @@
+```typescript
 import { NextResponse } from 'next/server';
 import { getMysqlConnection } from '@/lib/mysql';
 import { cookies } from 'next/headers';
+import { writeFile } from 'fs/promises';
+import path from 'path';
 
 async function isAuthenticated() {
     const cookieStore = await cookies();
@@ -10,12 +13,12 @@ async function isAuthenticated() {
 export async function GET() {
     const connection = await getMysqlConnection();
     if (!connection) return NextResponse.json({ error: 'Database error' }, { status: 500 });
-
+    
     try {
-        const [rows] = await connection.execute('SELECT * FROM news ORDER BY date DESC');
+        const [rows] = await connection.query('SELECT * FROM news ORDER BY date DESC');
         return NextResponse.json(rows);
     } catch (error) {
-        return NextResponse.json({ error: 'Failed to fetch news' }, { status: 500 });
+         return NextResponse.json({ error: 'Failed to fetch news' }, { status: 500 });
     } finally {
         await connection.end();
     }
@@ -28,13 +31,24 @@ export async function POST(req: Request) {
     const title = formData.get('title') as string;
     const content = formData.get('content') as string;
     const date = formData.get('date') as string;
-    // Image handling omitted for brevity/compatibility with Vercel/Next.js limitations on local FS. 
-    // In a real scenario, upload to S3 or similar. For now, we'll strip image or use external URL if text input.
-    // The legacy app used local uploads which won't persist well in Docker/Vercel ephemeral filesystems.
-    // Ideally we would fix this, but for "uguale a prima" locally it might work if volume mounted.
-    // For now, let's just insert without image if file is uploaded to avoid complexity, or handle basic string path if provided.
-
-    const image = null; // Placeholder
+    const imageFile = formData.get('image') as File | null;
+    
+    let imagePath = null;
+    if (imageFile && imageFile.size > 0) {
+        const buffer = Buffer.from(await imageFile.arrayBuffer());
+        const filename = Date.now() + '_' + imageFile.name.replaceAll(' ', '_');
+        
+        try {
+            await writeFile(
+                path.join(process.cwd(), 'public/uploads', filename),
+                buffer
+            );
+            imagePath = '/uploads/' + filename;
+        } catch (error) {
+            console.error('Error saving file:', error);
+            // Continue without image or return error? Let's log and continue for now or throw
+        }
+    }
 
     const connection = await getMysqlConnection();
     if (!connection) return NextResponse.json({ error: 'Database error' }, { status: 500 });
@@ -42,12 +56,13 @@ export async function POST(req: Request) {
     try {
         const [result] = await connection.execute(
             'INSERT INTO news (title, content, date, image) VALUES (?, ?, ?, ?)',
-            [title, content, date, image]
+            [title, content, date, imagePath]
         );
-        return NextResponse.json({ id: (result as any).insertId, title, content, date, image });
+        return NextResponse.json({ id: (result as any).insertId, title, content, date, image: imagePath });
     } catch (error) {
         return NextResponse.json({ error: (error as Error).message }, { status: 500 });
     } finally {
         await connection.end();
     }
 }
+```
