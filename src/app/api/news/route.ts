@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getMysqlConnection } from '@/lib/mysql';
 import { cookies } from 'next/headers';
-import { writeFile } from 'fs/promises';
+import { writeFile, mkdir } from 'fs/promises';
 import path from 'path';
 
 async function isAuthenticated() {
@@ -36,13 +36,13 @@ export async function POST(req: Request) {
     if (imageFile && imageFile.size > 0) {
         const buffer = Buffer.from(await imageFile.arrayBuffer());
         const filename = Date.now() + '_' + imageFile.name.replaceAll(' ', '_');
+        const uploadDir = path.join(process.cwd(), 'public/uploads');
 
         try {
-            await writeFile(
-                path.join(process.cwd(), 'public/uploads', filename),
-                buffer
-            );
+            await mkdir(uploadDir, { recursive: true });
+            await writeFile(path.join(uploadDir, filename), buffer);
             imagePath = '/uploads/' + filename;
+            console.log(`Saved image to ${path.join(uploadDir, filename)}`);
         } catch (error) {
             console.error('Error saving file:', error);
             // Continue without image or return error? Let's log and continue for now or throw
