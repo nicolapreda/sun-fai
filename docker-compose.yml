@@ -16,6 +16,8 @@ services:
       - AUTH_URL=https://sun-fai.org
     networks:
       - nginx
+    volumes:
+      - ./public/uploads:/app/public/uploads
 
 networks:
   nginx:
