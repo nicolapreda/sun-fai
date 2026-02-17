@@ -10,7 +10,6 @@ services:
     restart: unless-stopped
     env_file:
       - .env
-      - .env.local
     environment:
       - AUTH_TRUST_HOST=true
       - AUTH_URL=https://sun-fai.org
