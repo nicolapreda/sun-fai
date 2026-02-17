@@ -15,7 +15,7 @@ export default function DiventaSocio() {
             </h1>
 
             <div className="space-y-8">
-              <a href="https://drive.google.com/file/d/16OT188aqJVuSqRN2li8Q-pJJqSMKWU1e/view"
+              <a href="https://drive.google.com/file/d/1hfUPnlpROJvsaMqVHttI_ykHRCRb5_-b/view?usp=drive_link"
                 className="block border-2 border-black rounded-full p-6 hover:bg-black hover:text-white transition group">
                 <span className="font-bold text-lg block mb-1 underline group-hover:no-underline">Diventa
                   socio
@@ -24,7 +24,7 @@ export default function DiventaSocio() {
                   FISICHE.</span>
               </a>
 
-              <a href="https://drive.google.com/file/d/16OT188aqJVuSqRN2li8Q-pJJqSMKWU1e/view"
+              <a href="https://drive.google.com/file/d/1Hx6sfmzUmkI2Hxt8OfPAzYJPKAxRXI_u/view?usp=drive_link"
                 className="block border-2 border-black rounded-full p-6 hover:bg-black hover:text-white transition group">
                 <span className="font-bold text-lg block mb-1 underline group-hover:no-underline">Diventa
                   socio

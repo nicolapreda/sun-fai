@@ -107,11 +107,7 @@ export default function ChiSiamo() {
                    <div className="absolute inset-0 bg-[#1a1a1a] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
                       <span className="text-sunfai-yellow font-bold uppercase tracking-wider mb-2 text-sm">{member.role}</span>
                       <h3 className="text-white text-3xl font-black leading-tight mb-6" dangerouslySetInnerHTML={{ __html: member.name.replace(' ', '<br/>') }}></h3>
-                      <div className="w-10 h-10 rounded-full border border-white flex items-center justify-center text-white group-hover:bg-white group-hover:text-black transition duration-300">
-                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-5 h-5">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
-                         </svg>
-                      </div>
+
                    </div>
                 </div>
              ))}
