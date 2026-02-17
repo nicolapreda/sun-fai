@@ -204,11 +204,11 @@ export default function AdminDashboard() {
       </nav>
 
       <div className="max-w-7xl mx-auto px-6 py-10">
-        <div className="flex justify-between items-center mb-8">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
             <h1 className="text-3xl font-black">Gestione Contenuti</h1>
             <button 
                 onClick={() => { resetForm(); setShowModal(true); }}
-                className="bg-black text-white px-6 py-3 rounded-full font-bold shadow-lg hover:bg-sunfai-yellow hover:text-black transition transform hover:scale-105"
+                className="w-full md:w-auto bg-black text-white px-6 py-3 rounded-full font-bold shadow-lg hover:bg-sunfai-yellow hover:text-black transition transform hover:scale-105"
             >
                 + Aggiungi Nuovo
             </button>
@@ -234,10 +234,10 @@ export default function AdminDashboard() {
         <div className="grid grid-cols-1 gap-6">
             {activeTab === 'news' ? (
                 news.map(item => (
-                    <div key={item.id} className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition border border-gray-100 flex justify-between items-center group">
-                        <div className="flex items-center gap-4">
+                    <div key={item.id} className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 group">
+                        <div className="flex flex-col md:flex-row items-start md:items-center gap-4 w-full">
                             {item.image && (
-                                <div className="relative w-24 h-24 flex-shrink-0 rounded-lg overflow-hidden bg-gray-100">
+                                <div className="relative w-full md:w-24 h-48 md:h-24 flex-shrink-0 rounded-lg overflow-hidden bg-gray-100">
                                     <Image 
                                         src={item.image} 
                                         alt={item.title} 
@@ -255,11 +255,11 @@ export default function AdminDashboard() {
                                 <p className="text-gray-500 text-sm line-clamp-2 max-w-2xl">{item.content}</p>
                             </div>
                         </div>
-                        <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition">
-                            <button onClick={() => openEditModal(item, 'news')} className="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg font-bold text-sm">
+                        <div className="flex gap-2 w-full md:w-auto mt-4 md:mt-0 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition">
+                            <button onClick={() => openEditModal(item, 'news')} className="flex-1 md:flex-none bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg font-bold text-sm text-center">
                                 Modifica
                             </button>
-                            <button onClick={() => handleDelete(item.id, 'news')} className="bg-red-50 hover:bg-red-100 text-red-600 px-4 py-2 rounded-lg font-bold text-sm">
+                            <button onClick={() => handleDelete(item.id, 'news')} className="flex-1 md:flex-none bg-red-50 hover:bg-red-100 text-red-600 px-4 py-2 rounded-lg font-bold text-sm text-center">
                                 Elimina
                             </button>
                         </div>
@@ -267,25 +267,25 @@ export default function AdminDashboard() {
                 ))
             ) : (
                 events.map(item => (
-                    <div key={item.id} className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition border border-gray-100 flex justify-between items-center group">
-                         <div className="flex items-center gap-6">
+                    <div key={item.id} className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition border border-gray-100 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 group">
+                         <div className="flex flex-col md:flex-row items-start md:items-center gap-6 w-full">
                             <div className="bg-gray-50 text-black rounded-xl w-16 h-16 flex flex-col items-center justify-center flex-shrink-0 border border-gray-200">
                                 <span className="text-xs font-bold text-red-500 uppercase">{new Date(item.date).toLocaleDateString('it-IT', { month: 'short' }).replace('.', '').toUpperCase()}</span>
                                 <span className="text-2xl font-black leading-none">{new Date(item.date).getDate()}</span>
                             </div>
                             <div>
                                 <h3 className="text-xl font-black mb-1">{item.title}</h3>
-                                <div className="text-sm text-gray-500 flex items-center gap-4">
+                                <div className="text-sm text-gray-500 flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
                                     <span>📍 {item.location}</span>
                                     {item.time && <span>⏰ {item.time}</span>}
                                 </div>
                             </div>
                          </div>
-                         <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition">
-                            <button onClick={() => openEditModal(item, 'events')} className="bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg font-bold text-sm">
+                         <div className="flex gap-2 w-full md:w-auto mt-4 md:mt-0 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition">
+                            <button onClick={() => openEditModal(item, 'events')} className="flex-1 md:flex-none bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-lg font-bold text-sm text-center">
                                 Modifica
                             </button>
-                            <button onClick={() => handleDelete(item.id, 'events')} className="bg-red-50 hover:bg-red-100 text-red-600 px-4 py-2 rounded-lg font-bold text-sm">
+                            <button onClick={() => handleDelete(item.id, 'events')} className="flex-1 md:flex-none bg-red-50 hover:bg-red-100 text-red-600 px-4 py-2 rounded-lg font-bold text-sm text-center">
                                 Elimina
                             </button>
                         </div>
